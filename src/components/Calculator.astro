@@ -3,15 +3,17 @@
 
 <section class="section" id="calculator">
   <div class="container" style="text-align: center;">
-    <p class="section__pretitle">Estimator rapid</p>
-    <h2 class="section__title">Câte ședințe ai nevoie?</h2>
-    <p class="section__subtitle" style="margin-left:auto;margin-right:auto;">Răspunde la 3 întrebări rapide și îți spunem ce pachet ți se potrivește.</p>
+    <p class="section__pretitle">Sistem de calificare</p>
+    <h2 class="section__title">Configurează-ți pachetul de meditații</h2>
+    <p class="section__subtitle" style="margin-left:auto;margin-right:auto;">Află de câte ore ai nevoie și programează prima ședință direct aici.</p>
 
     <div class="calculator" id="calc-wizard">
       <div class="calculator__progress">
         <div class="calculator__progress-bar calculator__progress-bar--active" data-step="1"></div>
         <div class="calculator__progress-bar" data-step="2"></div>
         <div class="calculator__progress-bar" data-step="3"></div>
+        <div class="calculator__progress-bar" data-step="4"></div>
+        <div class="calculator__progress-bar" data-step="5"></div>
       </div>
 
       <!-- Step 1: Subject -->
@@ -46,31 +48,195 @@
         </div>
       </div>
 
-      <!-- Result -->
+      <!-- Result (Intermediate) -->
       <div class="calculator__step" data-step="result">
         <div class="calculator__result">
           <div class="calculator__result-icon" id="calc-result-icon"></div>
           <h3 class="calculator__result-title" id="calc-result-title"></h3>
           <p class="calculator__result-desc" id="calc-result-desc"></p>
-          <a href="#" id="calc-result-cta" target="_blank" rel="noopener" class="btn btn--whatsapp">
-            <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.126 1.52 5.867L.057 23.306a.75.75 0 0 0 .92.92l5.44-1.463A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
-            </svg>
-            <span id="calc-result-cta-text">Programează pe WhatsApp</span>
-          </a>
-          <button class="btn btn--outline" style="margin-top: 1rem;" id="calc-reset">Refă testul</button>
+          <p id="calc-result-price-label" style="font-weight: bold; color: var(--accent-light); margin-bottom: 1.5rem;"></p>
+          
+          <button class="btn btn--primary" id="btn-continue-form">
+            Continuă cu acest pachet →
+          </button>
+          <button class="btn btn--outline" style="margin-top: 1rem; margin-left: 0.5rem;" id="calc-reset">Refă testul</button>
         </div>
       </div>
+
+      <!-- Step 4: Qualification Form -->
+      <div class="calculator__step" data-step="4">
+        <h3 class="calculator__question">Hai să ne cunoaștem situația</h3>
+        
+        <div class="funnel-form">
+          <div class="form-group">
+            <label for="f_facultate">La ce facultate ești?</label>
+            <select id="f_facultate" class="form-input" required>
+              <option value="" disabled selected>Alege facultatea...</option>
+              <option value="FIMA">FIMA</option>
+              <option value="ETTI">ETTI</option>
+              <option value="Transporturi">Transporturi</option>
+              <option value="Energetica">Energetică</option>
+              <option value="SIM">SIM</option>
+              <option value="FILS">FILS</option>
+              <option value="Aerospatiale">Aerospațiale</option>
+              <option value="Alta">Alta</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="f_an">În ce an ești?</label>
+            <select id="f_an" class="form-input" required>
+              <option value="" disabled selected>Alege anul...</option>
+              <option value="Anul 1">Anul 1</option>
+              <option value="Anul 2">Anul 2</option>
+              <option value="Anul 3">Anul 3 (Restanțier)</option>
+              <option value="Anul 4">Anul 4+ (Restanțier)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Ai modele de subiecte / examene din anii trecuți?</label>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="f_subiecte" value="Da"> Da, le am pe grup</label>
+              <label class="radio-label"><input type="radio" name="f_subiecte" value="Nu"> Nu, nu am nimic</label>
+            </div>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="f_acord_pret" required>
+              <span id="label-acord-pret">Sunt de acord cu tariful afișat (plata se face după ședință).</span>
+            </label>
+          </div>
+
+          <button class="btn btn--primary" id="btn-to-step5" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Ultimul pas →
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 5: Contact -->
+      <div class="calculator__step" data-step="5">
+        <h3 class="calculator__question">Unde te contactez?</h3>
+        
+        <div class="funnel-form">
+          <div class="form-group">
+            <label for="f_nume">Cum te numești?</label>
+            <input type="text" id="f_nume" class="form-input" placeholder="Ex: Alexandru Popescu" required>
+          </div>
+
+          <div class="form-group">
+            <label for="f_telefon">Număr de WhatsApp (opțional, dar recomandat)</label>
+            <input type="tel" id="f_telefon" class="form-input" placeholder="07XX XXX XXX">
+            <small style="color: var(--text-muted); display: block; margin-top: 0.25rem;">Ca să te pot căuta direct dacă se pierde mesajul.</small>
+          </div>
+
+          <button class="btn btn--whatsapp" id="btn-submit-funnel" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            </svg>
+            Trimite & Deschide WhatsApp
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+<style>
+  .funnel-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color var(--transition-fast);
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-primary);
+    cursor: pointer;
+    font-weight: normal !important;
+  }
+
+  .radio-label:has(input:checked) {
+    border-color: var(--accent);
+    background: rgba(108, 92, 231, 0.1);
+  }
+
+  .checkbox-group {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background: rgba(108, 92, 231, 0.05);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-md);
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    cursor: pointer;
+    font-weight: normal !important;
+    line-height: 1.4;
+  }
+
+  .checkbox-label input {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+  }
+</style>
 
 <script>
   const wizard = document.getElementById('calc-wizard');
   if (wizard) {
     const state: Record<string, string> = {};
 
+    // Steps 1-3 Handlers
     wizard.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
       const option = target.closest('.calculator__option') as HTMLElement;
@@ -81,38 +247,38 @@
         const value = option.dataset.value || '';
         const nextStep = option.dataset.next || '';
 
-        // Save selection
         if (stepNum) state[`step${stepNum}`] = value;
 
-        // Highlight selected
         currentStep?.querySelectorAll('.calculator__option').forEach(o => o.classList.remove('calculator__option--selected'));
         option.classList.add('calculator__option--selected');
 
-        // Move to next step after brief delay
         setTimeout(() => {
-          // Hide current
-          currentStep?.classList.remove('calculator__step--active');
-
-          if (nextStep === 'result') {
-            showResult();
-          }
-
-          // Show next
-          const nextEl = wizard.querySelector(`[data-step="${nextStep}"]`) as HTMLElement;
-          nextEl?.classList.add('calculator__step--active');
-
-          // Update progress bars
-          wizard.querySelectorAll('.calculator__progress-bar').forEach(bar => {
-            const barStep = (bar as HTMLElement).dataset.step;
-            if (barStep && nextStep !== 'result') {
-              bar.classList.toggle('calculator__progress-bar--active', parseInt(barStep) <= parseInt(nextStep));
-            } else {
-              bar.classList.add('calculator__progress-bar--active');
-            }
-          });
+          goToStep(currentStep, nextStep);
+          if (nextStep === 'result') showResult();
         }, 200);
       }
     });
+
+    // Helper to transition steps
+    function goToStep(currentEl: HTMLElement, nextStepValue: string) {
+      currentEl.classList.remove('calculator__step--active');
+      const nextEl = wizard?.querySelector(`[data-step="${nextStepValue}"]`) as HTMLElement;
+      nextEl?.classList.add('calculator__step--active');
+
+      // Update progress bar
+      wizard?.querySelectorAll('.calculator__progress-bar').forEach(bar => {
+        const barStep = (bar as HTMLElement).dataset.step;
+        if (barStep && nextStepValue !== 'result') {
+          bar.classList.toggle('calculator__progress-bar--active', parseInt(barStep) <= parseInt(nextStepValue));
+        } else if (nextStepValue === 'result') {
+          // If intermediate result, fill 3 steps
+          bar.classList.toggle('calculator__progress-bar--active', parseInt(barStep || '0') <= 3);
+        }
+      });
+    }
+
+    let calculatedPrice = '120 lei/oră';
+    let calculatedPackage = '';
 
     function showResult() {
       const materie = state.step1 || 'materie';
@@ -122,47 +288,149 @@
       let icon = '🎯';
       let title = '';
       let desc = '';
-      let pret = '120 lei/oră';
-      let pachet = 'Pachetul 5 Garantat';
+      
+      calculatedPrice = '120 lei/oră';
+      calculatedPackage = 'Pachetul 5 Garantat';
 
       if (timp === 'urgent') {
         icon = '🔥';
-        pachet = 'Modul Pompier';
-        pret = '150 lei/oră';
+        calculatedPackage = 'Modul Pompier';
+        calculatedPrice = '150 lei/oră';
         const ore = nivel === 'zero' ? '4-6' : nivel === 'mediu' ? '2-4' : '2-3';
         title = `Modul Pompier — ${ore} ore intensive`;
-        desc = `E urgent, dar nu imposibil! Cu ${ore} ore concentrate pe tiparele de subiecte la ${materie}, îți maximizăm șansele de trecere. Tarif urgență: ${pret}.`;
+        desc = `E urgent! Cu ${ore} ore concentrate pe tiparele de subiecte la ${materie}, maximizăm șansele de trecere.`;
       } else if (nivel === 'zero') {
         icon = '📚';
         const ore = timp === 'scurt' ? '6-10' : '10-16';
         title = `Pachetul 5 Garantat — ~${ore} ore`;
-        desc = `Plecăm de la zero la ${materie}. În ${ore} ore acoperim bazele și tiparele de examen. ${pret}.`;
+        desc = `Plecăm de la zero la ${materie}. În ${ore} ore acoperim bazele și tiparele de examen.`;
       } else if (nivel === 'avansat') {
         icon = '🚀';
-        pachet = 'Modul Prestanță';
+        calculatedPackage = 'Modul Prestanță';
         const ore = timp === 'scurt' ? '4-6' : '6-10';
         title = `Modul Prestanță — ~${ore} ore`;
-        desc = `Pregătire avansată la ${materie} pentru nota 9-10. Subiecte capcană și exerciții complexe. ${pret}.`;
+        desc = `Pregătire avansată la ${materie} pentru nota 9-10. Subiecte capcană și exerciții complexe.`;
       } else {
         const ore = timp === 'scurt' ? '4-6' : '6-10';
-        title = `${pachet} — ~${ore} ore`;
-        desc = `Ai o bază la ${materie}, deci ne concentrăm pe exerciții și lacune. ${pret}.`;
+        title = `${calculatedPackage} — ~${ore} ore`;
+        desc = `Ai o bază la ${materie}, ne concentrăm pe exerciții practice.`;
       }
+
+      state.calculatedPackage = calculatedPackage;
+      state.calculatedPrice = calculatedPrice;
 
       const iconEl = document.getElementById('calc-result-icon');
       const titleEl = document.getElementById('calc-result-title');
       const descEl = document.getElementById('calc-result-desc');
-      const ctaEl = document.getElementById('calc-result-cta') as HTMLAnchorElement;
+      const priceLabelEl = document.getElementById('calc-result-price-label');
+      const acordLabel = document.getElementById('label-acord-pret');
 
       if (iconEl) iconEl.textContent = icon;
       if (titleEl) titleEl.textContent = title;
       if (descEl) descEl.textContent = desc;
-
-      const msg = encodeURIComponent(`Salut! Am făcut calculatorul pe site. Am nevoie de ${pachet} la ${materie}. Când ai disponibilitate?`);
-      if (ctaEl) ctaEl.href = `https://wa.me/NUMAR_TAU?text=${msg}`;
+      if (priceLabelEl) priceLabelEl.textContent = `Tarif: ${calculatedPrice}`;
+      if (acordLabel) acordLabel.textContent = `Sunt de acord cu tariful de ${calculatedPrice} (plata se face după ședință).`;
     }
 
-    // Reset
+    // Continue to Funnel Form (Step 4)
+    document.getElementById('btn-continue-form')?.addEventListener('click', () => {
+      const resultStep = wizard.querySelector('[data-step="result"]') as HTMLElement;
+      goToStep(resultStep, '4');
+    });
+
+    // Step 4 to Step 5
+    document.getElementById('btn-to-step5')?.addEventListener('click', () => {
+      const fac = (document.getElementById('f_facultate') as HTMLSelectElement).value;
+      const an = (document.getElementById('f_an') as HTMLSelectElement).value;
+      const subiecte = (document.querySelector('input[name="f_subiecte"]:checked') as HTMLInputElement)?.value;
+      const acord = (document.getElementById('f_acord_pret') as HTMLInputElement).checked;
+
+      if (!fac || !an || !subiecte) {
+        alert('Te rog să completezi toate câmpurile.');
+        return;
+      }
+      if (!acord) {
+        alert('Trebuie să fii de acord cu tariful pentru a continua.');
+        return;
+      }
+
+      state.facultate = fac;
+      state.an = an;
+      state.subiecte = subiecte;
+      state.acordPret = 'Da';
+
+      const step4 = wizard.querySelector('[data-step="4"]') as HTMLElement;
+      goToStep(step4, '5');
+    });
+
+    // Submit Webhook & Redirect
+    document.getElementById('btn-submit-funnel')?.addEventListener('click', async (e) => {
+      const btn = e.currentTarget as HTMLButtonElement;
+      const nume = (document.getElementById('f_nume') as HTMLInputElement).value;
+      const telefon = (document.getElementById('f_telefon') as HTMLInputElement).value;
+
+      if (!nume) {
+        alert('Te rog să introduci numele.');
+        return;
+      }
+
+      state.nume = nume;
+      state.telefon = telefon;
+
+      // Disable button
+      const ogText = btn.innerHTML;
+      btn.innerHTML = 'Se procesează...';
+      btn.disabled = true;
+
+      // Prepare payload
+      const payload = {
+        materie: state.step1,
+        nivel_initial: state.step2,
+        timp_ramas: state.step3,
+        pachet_recomandat: state.calculatedPackage,
+        pret: state.calculatedPrice,
+        facultate: state.facultate,
+        an: state.an,
+        are_subiecte: state.subiecte,
+        nume: state.nume,
+        telefon: state.telefon,
+        sursa: window.location.href
+      };
+
+      // Webhook Trigger (Make.com or Zapier)
+      // Folosim o variabilă globală injectată de Astro sau ignorăm erorile dacă URL-ul nu e setat
+      const webhookUrl = import.meta.env.PUBLIC_MAKE_WEBHOOK;
+      
+      if (webhookUrl) {
+        try {
+          await fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        } catch (err) {
+          console.error('Webhook error:', err);
+          // Continua chiar daca webhook-ul pica, nu vrem sa pierdem lead-ul pe WhatsApp
+        }
+      }
+
+      // Generate WhatsApp message
+      const msg = `Salut! Sunt ${payload.nume}, anul ${payload.an} la ${payload.facultate}.\n\nAm făcut formularul pe site și aș vrea ${payload.pachet_recomandat} la ${payload.materie}.\nTarif acceptat: ${payload.pret}.\n\nCând am putea începe?`;
+      const encodedMsg = encodeURIComponent(msg);
+      // Pui numarul tau real aici
+      const waUrl = `https://wa.me/NUMAR_TAU?text=${encodedMsg}`;
+
+      // Redirect
+      window.location.href = waUrl;
+      
+      // Reset after a delay
+      setTimeout(() => {
+        btn.innerHTML = ogText;
+        btn.disabled = false;
+      }, 3000);
+    });
+
+    // Reset Flow
     document.getElementById('calc-reset')?.addEventListener('click', () => {
       Object.keys(state).forEach(k => delete state[k]);
       wizard.querySelectorAll('.calculator__step').forEach(s => s.classList.remove('calculator__step--active'));
@@ -171,6 +439,15 @@
       wizard.querySelectorAll('.calculator__progress-bar').forEach((bar, i) => {
         bar.classList.toggle('calculator__progress-bar--active', i === 0);
       });
+      
+      // Reset inputs
+      (document.getElementById('f_nume') as HTMLInputElement).value = '';
+      (document.getElementById('f_telefon') as HTMLInputElement).value = '';
+      (document.getElementById('f_facultate') as HTMLSelectElement).value = '';
+      (document.getElementById('f_an') as HTMLSelectElement).value = '';
+      (document.getElementById('f_acord_pret') as HTMLInputElement).checked = false;
+      const radios = document.querySelectorAll('input[name="f_subiecte"]') as NodeListOf<HTMLInputElement>;
+      radios.forEach(r => r.checked = false);
     });
   }
 </script>
