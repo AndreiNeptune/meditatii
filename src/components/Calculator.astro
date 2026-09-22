@@ -72,15 +72,16 @@
             <label for="f_facultate">La ce facultate ești?</label>
             <select id="f_facultate" class="form-input" required>
               <option value="" disabled selected>Alege facultatea...</option>
-              <option value="FIMA">FIMA</option>
+              <option value="FIMM">FIMM</option>
               <option value="ETTI">ETTI</option>
               <option value="Transporturi">Transporturi</option>
               <option value="Energetica">Energetică</option>
               <option value="SIM">SIM</option>
               <option value="FILS">FILS</option>
               <option value="Aerospatiale">Aerospațiale</option>
-              <option value="Alta">Alta</option>
+              <option value="Alta">Alta (specifică tu)</option>
             </select>
+            <input type="text" id="f_facultate_other" class="form-input" placeholder="Scrie facultatea ta..." style="display: none; margin-top: 0.5rem;">
           </div>
 
           <div class="form-group">
@@ -236,6 +237,19 @@
   if (wizard) {
     const state: Record<string, string> = {};
 
+    // Show custom facultate input if "Alta" is selected
+    document.getElementById('f_facultate')?.addEventListener('change', (e) => {
+      const select = e.target as HTMLSelectElement;
+      const otherInput = document.getElementById('f_facultate_other') as HTMLInputElement;
+      if (select.value === 'Alta') {
+        otherInput.style.display = 'block';
+        otherInput.required = true;
+      } else {
+        otherInput.style.display = 'none';
+        otherInput.required = false;
+      }
+    });
+
     // Steps 1-3 Handlers
     wizard.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
@@ -340,7 +354,10 @@
 
     // Step 4 to Step 5
     document.getElementById('btn-to-step5')?.addEventListener('click', () => {
-      const fac = (document.getElementById('f_facultate') as HTMLSelectElement).value;
+      let fac = (document.getElementById('f_facultate') as HTMLSelectElement).value;
+      if (fac === 'Alta') {
+        fac = (document.getElementById('f_facultate_other') as HTMLInputElement).value;
+      }
       const an = (document.getElementById('f_an') as HTMLSelectElement).value;
       const subiecte = (document.querySelector('input[name="f_subiecte"]:checked') as HTMLInputElement)?.value;
       const acord = (document.getElementById('f_acord_pret') as HTMLInputElement).checked;
@@ -444,6 +461,8 @@
       (document.getElementById('f_nume') as HTMLInputElement).value = '';
       (document.getElementById('f_telefon') as HTMLInputElement).value = '';
       (document.getElementById('f_facultate') as HTMLSelectElement).value = '';
+      (document.getElementById('f_facultate_other') as HTMLInputElement).value = '';
+      (document.getElementById('f_facultate_other') as HTMLInputElement).style.display = 'none';
       (document.getElementById('f_an') as HTMLSelectElement).value = '';
       (document.getElementById('f_acord_pret') as HTMLInputElement).checked = false;
       const radios = document.querySelectorAll('input[name="f_subiecte"]') as NodeListOf<HTMLInputElement>;
