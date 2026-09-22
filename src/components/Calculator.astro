@@ -121,6 +121,9 @@
         <h3 class="calculator__question">Unde te contactez?</h3>
         
         <div class="funnel-form">
+          <!-- Honeypot Field (Hidden from real users) -->
+          <input type="text" id="b_website" name="b_website" style="display:none" tabindex="-1" autocomplete="off" placeholder="Nu completa acest câmp">
+
           <div class="form-group">
             <label for="f_nume">Cum te numești?</label>
             <input type="text" id="f_nume" class="form-input" placeholder="Ex: Alexandru Popescu" required>
@@ -399,6 +402,9 @@
       btn.innerHTML = 'Se procesează...';
       btn.disabled = true;
 
+      // Adăugăm honeypot-ul în payload
+      const honeypot = (document.getElementById('b_website') as HTMLInputElement).value;
+
       // Prepare payload
       const payload = {
         materie: state.step1,
@@ -411,24 +417,19 @@
         are_subiecte: state.subiecte,
         nume: state.nume,
         telefon: state.telefon,
-        sursa: window.location.href
+        sursa: window.location.href,
+        b_website: honeypot
       };
 
-      // Webhook Trigger (Make.com or Zapier)
-      // Folosim o variabilă globală injectată de Astro sau ignorăm erorile dacă URL-ul nu e setat
-      const webhookUrl = import.meta.env.PUBLIC_MAKE_WEBHOOK;
-      
-      if (webhookUrl) {
-        try {
-          await fetch(webhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-        } catch (err) {
-          console.error('Webhook error:', err);
-          // Continua chiar daca webhook-ul pica, nu vrem sa pierdem lead-ul pe WhatsApp
-        }
+      // Apelăm endpoint-ul nostru de Astro SSR
+      try {
+        await fetch('/api/submit-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.error('API Route error:', err);
       }
 
       // Generate WhatsApp message
