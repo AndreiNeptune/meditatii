@@ -279,7 +279,7 @@
     // Helper to transition steps
     function goToStep(currentEl: HTMLElement, nextStepValue: string) {
       currentEl.classList.remove('calculator__step--active');
-      const nextEl = wizard?.querySelector(`[data-step="${nextStepValue}"]`) as HTMLElement;
+      const nextEl = wizard?.querySelector(`.calculator__step[data-step="${nextStepValue}"]`) as HTMLElement;
       nextEl?.classList.add('calculator__step--active');
 
       // Update progress bar
@@ -351,7 +351,7 @@
 
     // Continue to Funnel Form (Step 4)
     document.getElementById('btn-continue-form')?.addEventListener('click', () => {
-      const resultStep = wizard.querySelector('[data-step="result"]') as HTMLElement;
+      const resultStep = wizard.querySelector('.calculator__step[data-step="result"]') as HTMLElement;
       goToStep(resultStep, '4');
     });
 
@@ -379,7 +379,7 @@
       state.subiecte = subiecte;
       state.acordPret = 'Da';
 
-      const step4 = wizard.querySelector('[data-step="4"]') as HTMLElement;
+      const step4 = wizard.querySelector('.calculator__step[data-step="4"]') as HTMLElement;
       goToStep(step4, '5');
     });
 
@@ -452,7 +452,7 @@
     document.getElementById('calc-reset')?.addEventListener('click', () => {
       Object.keys(state).forEach(k => delete state[k]);
       wizard.querySelectorAll('.calculator__step').forEach(s => s.classList.remove('calculator__step--active'));
-      wizard.querySelector('[data-step="1"]')?.classList.add('calculator__step--active');
+      wizard.querySelector('.calculator__step[data-step="1"]')?.classList.add('calculator__step--active');
       wizard.querySelectorAll('.calculator__option').forEach(o => o.classList.remove('calculator__option--selected'));
       wizard.querySelectorAll('.calculator__progress-bar').forEach((bar, i) => {
         bar.classList.toggle('calculator__progress-bar--active', i === 0);
