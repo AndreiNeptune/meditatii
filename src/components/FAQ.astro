@@ -1,0 +1,86 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items?: FAQItem[];
+}
+
+const { items = [] } = Astro.props;
+
+const defaultItems: FAQItem[] = [
+  {
+    question: "Sunt absolut la zero la matematică din liceu. Mă mai poți ajuta?",
+    answer: "Sigur! Peste jumătate din studenții cu care lucrez vin cu lacune serioase din liceu. Îți explic conceptele de bază (derivate, integrale, trigonometrie) pe parcurs, exact acolo unde ai nevoie. Pachetul 5 Garantat e fix pentru tine."
+  },
+  {
+    question: "Mă ajuți doar cu rezolvarea temei sau proiectului?",
+    answer: "Nu vând teme gata făcute — te-ar bloca la colocviu. Facem tema împreună: eu explic pașii, tu calculezi și desenezi. La final vei înțelege 100% ce ai făcut și vei ști să reproduci singur."
+  },
+  {
+    question: "Cât durează o ședință și cum se desfășoară online?",
+    answer: "O ședință standard durează 2 ore (timp optim de concentrare). Online lucrăm cu tabletă grafică și screen sharing pe Discord sau Google Meet. E ca și cum am fi lângă tine în cămin, doar că fiecare e la el acasă."
+  },
+  {
+    question: "Cât costă o ședință?",
+    answer: "120 lei/oră pentru pregătire standard (orice materie, orice pachet). 150 lei/oră pentru urgențe (Modul Pompier — sub 72h până la examen). Plata se face după fiecare ședință."
+  },
+  {
+    question: "Ce materii predai exact?",
+    answer: "Geometrie Descriptivă (epură, intersecții, desfășurate), Analiză Matematică 1 (serii, derivate, integrale, ecuații diferențiale), Mecanică 1 (Statică, Cinematică) și 2 (Dinamică, Lagrange), și Desen Tehnic Industrial (vederi, secțiuni, cotare, toleranțe). Acopăr materia de la FIMA, ETTI, Transporturi, Energetică, SIM, FILS, Aerospațiale."
+  },
+  {
+    question: "Pot face ședințe și fizic, nu doar online?",
+    answer: "Da! Ne putem întâlni fizic lângă campus — zona Regie, Grozăvești sau Leu. Alege ce ți se potrivește cel mai bine."
+  }
+];
+
+const faqItems = items.length > 0 ? items : defaultItems;
+---
+
+<section class="section" id="faq">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: var(--space-2xl);">
+      <p class="section__pretitle">Întrebări frecvente</p>
+      <h2 class="section__title">Ai întrebări? Probabil găsești răspunsul aici</h2>
+    </div>
+
+    <div class="faq-list">
+      {faqItems.map((item, i) => (
+        <div class="faq-item" id={`faq-${i}`}>
+          <button class="faq-item__question" aria-expanded="false" aria-controls={`faq-answer-${i}`}>
+            {item.question}
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-item__answer" id={`faq-answer-${i}`}>
+            <p class="faq-item__answer-inner">{item.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-item__question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item?.classList.contains('faq-item--open');
+
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('faq-item--open'));
+
+      // Toggle current
+      if (!isOpen) {
+        item?.classList.add('faq-item--open');
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+</script>

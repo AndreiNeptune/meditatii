@@ -1,0 +1,27 @@
+---
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 48, class: className = '' } = Astro.props;
+---
+<svg class={className} width={size} height={size} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Beam with forces - Mecanica 1 -->
+  <!-- Main beam -->
+  <rect x="6" y="22" width="36" height="4" rx="1" fill="currentColor" opacity="0.3"/>
+  <line x1="6" y1="24" x2="42" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Left support (pin) -->
+  <polygon points="10,26 7,34 13,34" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
+  <line x1="5" y1="35" x2="15" y2="35" stroke="currentColor" stroke-width="1.5"/>
+  <!-- Right support (roller) -->
+  <polygon points="34,26 31,32 37,32" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
+  <circle cx="34" cy="35" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+  <!-- Force arrows (down) -->
+  <line x1="22" y1="8" x2="22" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="22,22 19,16 25,16" fill="currentColor"/>
+  <!-- Force label -->
+  <text x="24" y="10" fill="currentColor" font-size="7" font-weight="bold" opacity="0.6">F</text>
+  <!-- Reaction arrows (up) -->
+  <line x1="10" y1="42" x2="10" y2="36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <polygon points="10,36 8,39 12,39" fill="currentColor" opacity="0.5"/>
+</svg>

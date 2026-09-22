@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import IconCompass from '../components/icons/IconCompass.astro';
+import IconGraph from '../components/icons/IconGraph.astro';
+import IconBeam from '../components/icons/IconBeam.astro';
+import IconGear from '../components/icons/IconGear.astro';
+import IconRuler from '../components/icons/IconRuler.astro';
+import Calculator from '../components/Calculator.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FAQ from '../components/FAQ.astro';
+---
+
+<BaseLayout
+  title="Meditații UNSTPB București | Treci Examenele de Anul 1 și 2"
+  description="Meditații online și fizic pentru studenții Politehnicii (UNSTPB). GD, Analiză Matematică, Mecanică și Desen Tehnic. 120 lei/oră. Scrie pe WhatsApp!"
+  whatsappMaterie="o materie de la Poli"
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="hero">
+    <div class="hero__grid"></div>
+    <div class="container">
+      <div class="hero__content">
+        <p class="hero__pretitle">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 12V4L12 12H4Z" stroke="currentColor" stroke-width="1.2" fill="currentColor" opacity="0.2"/></svg>
+          Exclusiv pentru studenții UNSTPB (Regie, Leu)
+        </p>
+        <h1 class="hero__title">
+          Nu mai lăsa examenele din primii ani <span>să te bage în toamnă</span>
+        </h1>
+        <p class="hero__subtitle">
+          Geometrie Descriptivă, Analiză, Mecanică și Desen Tehnic — explicate pe limba ta, nu a profilor. Fie că ești la zero sau vrei bursă, te ajut să înțelegi logica, nu să tocești.
+          <strong class="hero__slogan">Ai prestanță și fără restanță!</strong>
+        </p>
+        <div class="hero__actions">
+          <a href="https://wa.me/NUMAR_TAU?text=Salut!%20Sunt%20student%20la%20Poli%20și%20am%20nevoie%20de%20ajutor%20la%20o%20materie.%20Când%20ai%20disponibilitate?" target="_blank" rel="noopener" class="btn btn--whatsapp">
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.126 1.52 5.867L.057 23.306a.75.75 0 0 0 .92.92l5.44-1.463A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.875 0-3.654-.516-5.197-1.477l-.363-.215-3.762 1.011 1.011-3.762-.235-.374A9.698 9.698 0 0 1 2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+            Scrie-mi pe WhatsApp
+          </a>
+          <a href="#materii" class="btn btn--outline">
+            Vezi materiile →
+          </a>
+        </div>
+        <p class="hero__micro">120 lei/oră • Răspund în maxim 2 ore</p>
+        <div class="hero__badges">
+          <span class="badge badge--accent">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+            Online (Discord / Meet)
+          </span>
+          <span class="badge badge--accent">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Fizic (Regie / Leu)
+          </span>
+          <span class="badge badge--green">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            FIMA, ETTI, Transporturi, Energetică, SIM
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MATERII ═══ -->
+  <section class="section" id="materii">
+    <div class="container">
+      <div class="reveal">
+        <p class="section__pretitle">Ce materii predau</p>
+        <h2 class="section__title">Alege materia la care ai nevoie de ajutor</h2>
+      </div>
+      <div class="subjects-grid">
+        <a href="/meditatii-geometrie-descriptiva" class="subject-card card card--glow reveal">
+          <IconCompass class="subject-card__icon" size={48} />
+          <h3 class="subject-card__title">Geometrie Descriptivă (GD)</h3>
+          <p class="subject-card__desc">Epure, intersecții de corpuri, desfășurări și secțiuni plane. Înțelegi pașii de execuție pas cu pas.</p>
+          <span class="subject-card__arrow">Vezi detalii →</span>
+        </a>
+        <a href="/meditatii-analiza-matematica" class="subject-card card card--glow reveal">
+          <IconGraph class="subject-card__icon" size={48} />
+          <h3 class="subject-card__title">Analiză Matematică 1</h3>
+          <p class="subject-card__desc">Șiruri, serii, derivate parțiale, integrale improprii și ecuații diferențiale. Focus pe exerciții.</p>
+          <span class="subject-card__arrow">Vezi detalii →</span>
+        </a>
+        <a href="/meditatii-mecanica-1" class="subject-card card card--glow reveal">
+          <IconBeam class="subject-card__icon" size={48} />
+          <h3 class="subject-card__title">Mecanică 1 (Statică & Cinematică)</h3>
+          <p class="subject-card__desc">Grinzi cu zăbrele, centre de masă, mișcarea punctului și a rigidului. Rezolvăm exerciții.</p>
+          <span class="subject-card__arrow">Vezi detalii →</span>
+        </a>
+        <a href="/meditatii-mecanica-2" class="subject-card card card--glow reveal">
+          <IconGear class="subject-card__icon" size={48} />
+          <h3 class="subject-card__title">Mecanică 2 (Dinamică)</h3>
+          <p class="subject-card__desc">Teoremele generale și ecuațiile lui Lagrange de speța a II-a. Facem exerciții la greu.</p>
+          <span class="subject-card__arrow">Vezi detalii →</span>
+        </a>
+        <a href="/meditatii-desen-tehnic" class="subject-card card card--glow reveal">
+          <IconRuler class="subject-card__icon" size={48} />
+          <h3 class="subject-card__title">Desen Tehnic Industrial</h3>
+          <p class="subject-card__desc">Vederi, secțiuni, cotare, toleranțe și ansambluri. Înțelegi logica din spate și trasezi corect.</p>
+          <span class="subject-card__arrow">Vezi detalii →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PAIN POINTS ═══ -->
+  <section class="section" id="de-ce" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="reveal" style="text-align: center;">
+        <p class="section__pretitle">Problema reală</p>
+        <h2 class="section__title">Știm amândoi cum e la Poli...</h2>
+        <p class="section__subtitle" style="margin-left:auto;margin-right:auto;">Te uiți la curs și simți că se vorbește în chineză? Nu ești singurul.</p>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-card card reveal">
+          <svg class="pain-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 8v4M12 16h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+          <h3 class="pain-card__title">Teorie multă, practică puțină</h3>
+          <p class="pain-card__desc">Ți se aruncă teoreme și proiecții la cap, dar la examen îți pică exerciții pe care nu le-ai mai văzut niciodată.</p>
+        </div>
+        <div class="pain-card card reveal">
+          <svg class="pain-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          <h3 class="pain-card__title">Teme și planșe imposibile</h3>
+          <p class="pain-card__desc">Primești un proiect la Desen sau o epură la GD și nu ai absolut nicio explicație de unde să începi.</p>
+        </div>
+        <div class="pain-card card reveal">
+          <svg class="pain-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h3 class="pain-card__title">Timpul scurt</h3>
+          <p class="pain-card__desc">Nu ai timp să descifrezi singur cursurile stufoase între laboratoare, proiecte și restul materiilor.</p>
+        </div>
+      </div>
+      <div class="solution-box reveal">
+        <svg class="solution-box__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div>
+          <h3 style="margin-bottom: 0.5rem;">Soluția: Traduc limbajul academic în exerciții practice</h3>
+          <p>Nu predau teorie abstractă. Mă concentrez pe ce se dă efectiv la examen: tipare de subiecte, pași de rezolvare clari și exerciții rezolvate cap-coadă, pe înțelesul tău.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PACHETE ═══ -->
+  <section class="section" id="pachete">
+    <div class="container">
+      <div class="reveal" style="text-align: center;">
+        <p class="section__pretitle">Cum te ajut</p>
+        <h2 class="section__title">Alege modul de pregătire</h2>
+      </div>
+      <div class="packages-grid">
+        <div class="package-card card card--urgent reveal">
+          <div class="package-card__emoji">🔥</div>
+          <h3 class="package-card__name">Modul Pompier</h3>
+          <div class="package-card__price">150 lei <span>/ oră</span></div>
+          <p class="package-card__desc">Sub 72h până la examen? Recapitulăm exclusiv tiparele care pică sigur (Regula 80/20).</p>
+          <div class="package-card__features">
+            <div class="package-card__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Focus pe exercițiile cu probabilitate maximă
+            </div>
+            <div class="package-card__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Ședințe intensive de 2-3 ore
+            </div>
+            <div class="package-card__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Obiectiv: Nota 5 garantată
+            </div>
+          </div>
+          <a href="https://wa.me/NUMAR_TAU?text=Salut!%20Am%20examen%20în%20mai%20puțin%20de%2072h%20și%20am%20nevoie%20de%20Modul%20Pompier.%20Când%20poți?" target="_blank" rel="noopener" class="btn btn--warm">Scrie-mi ACUM</a>
+        </div>
+
+        <div class="package-card card card--popular reveal">
+          <div class="package-card__emoji">🎯</div>
+          <h3 class="package-card__name">Pachetul 5 Garantat</h3>
+          <div class="package-card__price">120 lei <span>/ oră</span></div>
+          <p class="package-card__desc">De la zero la trecere. Acoperim bazele, umplem lacunele și trecem prin tiparele de examen.</p>
+          <div class="package-card__features">
+            <div class="package-card__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Recapitulare noțiuni de bază (și din liceu)
+            </div>
+            <div class="package-card__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Ședințe structurate săptămânal
+            </div>
+            <div class="package-card__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Ajutor la teme și proiecte
+            </div>
+            <div class="package-card__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Obiectiv: Nota 6-7 curată
+            </div>
+          </div>
+          <a href="https://wa.me/NUMAR_TAU?text=Salut!%20Vreau%20Pachetul%205%20Garantat.%20Când%20ai%20disponibilitate?" target="_blank" rel="noopener" class="btn btn--primary">Programează o ședință</a>
+        </div>
+
+        <div class="package-card card card--glow reveal">
+          <div class="package-card__emoji">🚀</div>
+          <h3 class="package-card__name">Modul Prestanță / Bursă</h3>
+          <div class="package-card__price">120 lei <span>/ oră</span></div>
+          <p class="package-card__desc">Pentru cei care vor nota 9-10. Detaliem conceptele complexe, rezolvăm subiecte capcană.</p>
+          <div class="package-card__features">
+            <div class="package-card__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Exerciții avansate și subiecte din anii trecuți
+            </div>
+            <div class="package-card__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Optimizare timp de rezolvare
+            </div>
+            <div class="package-card__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Obiectiv: Nota 9-10 și bursă
+            </div>
+          </div>
+          <a href="https://wa.me/NUMAR_TAU?text=Salut!%20Vreau%20Modul%20Prestanță%20pentru%20note%20mari.%20Când%20ai%20disponibilitate?" target="_blank" rel="noopener" class="btn btn--primary">Programează o ședință</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CALCULATOR ═══ -->
+  <div class="reveal">
+    <Calculator />
+  </div>
+
+  <!-- ═══ TESTIMONIALE ═══ -->
+  <div class="reveal">
+    <Testimonials />
+  </div>
+
+  <!-- ═══ FAQ ═══ -->
+  <div class="reveal">
+    <FAQ />
+  </div>
+
+  <!-- ═══ CTA FINAL ═══ -->
+  <section class="cta-section reveal">
+    <div class="container">
+      <p class="section__pretitle">Gata de treabă?</p>
+      <h2 class="cta-section__title">Scrie-mi pe WhatsApp cu materia și data examenului</h2>
+      <p class="cta-section__desc section__subtitle">120 lei/oră • 150 lei/oră urgențe • Online sau fizic lângă campus</p>
+      <a href="https://wa.me/NUMAR_TAU?text=Salut!%20Sunt%20student%20la%20Poli%20și%20vreau%20să%20programez%20o%20ședință.%20Materia%3A%20%5Bcompleteaz%C4%83%5D.%20Data%20examenului%3A%20%5Bcompleteaz%C4%83%5D." target="_blank" rel="noopener" class="btn btn--whatsapp">
+        <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.126 1.52 5.867L.057 23.306a.75.75 0 0 0 .92.92l5.44-1.463A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        Programează acum pe WhatsApp
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

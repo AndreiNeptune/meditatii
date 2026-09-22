@@ -1,0 +1,176 @@
+---
+---
+
+<section class="section" id="calculator">
+  <div class="container" style="text-align: center;">
+    <p class="section__pretitle">Estimator rapid</p>
+    <h2 class="section__title">Câte ședințe ai nevoie?</h2>
+    <p class="section__subtitle" style="margin-left:auto;margin-right:auto;">Răspunde la 3 întrebări rapide și îți spunem ce pachet ți se potrivește.</p>
+
+    <div class="calculator" id="calc-wizard">
+      <div class="calculator__progress">
+        <div class="calculator__progress-bar calculator__progress-bar--active" data-step="1"></div>
+        <div class="calculator__progress-bar" data-step="2"></div>
+        <div class="calculator__progress-bar" data-step="3"></div>
+      </div>
+
+      <!-- Step 1: Subject -->
+      <div class="calculator__step calculator__step--active" data-step="1">
+        <h3 class="calculator__question">La ce materie ai nevoie de ajutor?</h3>
+        <div class="calculator__options">
+          <button class="calculator__option" data-value="Geometrie Descriptivă" data-next="2">📐 Geometrie Descriptivă (GD)</button>
+          <button class="calculator__option" data-value="Analiză Matematică" data-next="2">📊 Analiză Matematică 1</button>
+          <button class="calculator__option" data-value="Mecanică 1 (Statică & Cinematică)" data-next="2">⚙️ Mecanică 1 (Statică & Cinematică)</button>
+          <button class="calculator__option" data-value="Mecanică 2 (Dinamică)" data-next="2">🚀 Mecanică 2 (Dinamică)</button>
+          <button class="calculator__option" data-value="Desen Tehnic Industrial" data-next="2">📏 Desen Tehnic Industrial</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Level -->
+      <div class="calculator__step" data-step="2">
+        <h3 class="calculator__question">Care e nivelul tău actual?</h3>
+        <div class="calculator__options">
+          <button class="calculator__option" data-value="zero" data-next="3">😵 Sunt pe altă planetă (la zero complet)</button>
+          <button class="calculator__option" data-value="mediu" data-next="3">🤔 Am fost la cursuri, dar mă pierd la teme</button>
+          <button class="calculator__option" data-value="avansat" data-next="3">🎯 Vreau să sparg topul pentru bursă (9-10)</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Time -->
+      <div class="calculator__step" data-step="3">
+        <h3 class="calculator__question">Cât timp mai ai până la examen?</h3>
+        <div class="calculator__options">
+          <button class="calculator__option" data-value="urgent" data-next="result">🔥 Sub 72 de ore (E URGENT!)</button>
+          <button class="calculator__option" data-value="scurt" data-next="result">⏰ 1-2 săptămâni</button>
+          <button class="calculator__option" data-value="lung" data-next="result">📅 Suntem în timpul semestrului</button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="calculator__step" data-step="result">
+        <div class="calculator__result">
+          <div class="calculator__result-icon" id="calc-result-icon"></div>
+          <h3 class="calculator__result-title" id="calc-result-title"></h3>
+          <p class="calculator__result-desc" id="calc-result-desc"></p>
+          <a href="#" id="calc-result-cta" target="_blank" rel="noopener" class="btn btn--whatsapp">
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.126 1.52 5.867L.057 23.306a.75.75 0 0 0 .92.92l5.44-1.463A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+            </svg>
+            <span id="calc-result-cta-text">Programează pe WhatsApp</span>
+          </a>
+          <button class="btn btn--outline" style="margin-top: 1rem;" id="calc-reset">Refă testul</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const wizard = document.getElementById('calc-wizard');
+  if (wizard) {
+    const state: Record<string, string> = {};
+
+    wizard.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const option = target.closest('.calculator__option') as HTMLElement;
+
+      if (option) {
+        const currentStep = option.closest('.calculator__step') as HTMLElement;
+        const stepNum = currentStep?.dataset.step;
+        const value = option.dataset.value || '';
+        const nextStep = option.dataset.next || '';
+
+        // Save selection
+        if (stepNum) state[`step${stepNum}`] = value;
+
+        // Highlight selected
+        currentStep?.querySelectorAll('.calculator__option').forEach(o => o.classList.remove('calculator__option--selected'));
+        option.classList.add('calculator__option--selected');
+
+        // Move to next step after brief delay
+        setTimeout(() => {
+          // Hide current
+          currentStep?.classList.remove('calculator__step--active');
+
+          if (nextStep === 'result') {
+            showResult();
+          }
+
+          // Show next
+          const nextEl = wizard.querySelector(`[data-step="${nextStep}"]`) as HTMLElement;
+          nextEl?.classList.add('calculator__step--active');
+
+          // Update progress bars
+          wizard.querySelectorAll('.calculator__progress-bar').forEach(bar => {
+            const barStep = (bar as HTMLElement).dataset.step;
+            if (barStep && nextStep !== 'result') {
+              bar.classList.toggle('calculator__progress-bar--active', parseInt(barStep) <= parseInt(nextStep));
+            } else {
+              bar.classList.add('calculator__progress-bar--active');
+            }
+          });
+        }, 200);
+      }
+    });
+
+    function showResult() {
+      const materie = state.step1 || 'materie';
+      const nivel = state.step2 || 'mediu';
+      const timp = state.step3 || 'lung';
+
+      let icon = '🎯';
+      let title = '';
+      let desc = '';
+      let pret = '120 lei/oră';
+      let pachet = 'Pachetul 5 Garantat';
+
+      if (timp === 'urgent') {
+        icon = '🔥';
+        pachet = 'Modul Pompier';
+        pret = '150 lei/oră';
+        const ore = nivel === 'zero' ? '4-6' : nivel === 'mediu' ? '2-4' : '2-3';
+        title = `Modul Pompier — ${ore} ore intensive`;
+        desc = `E urgent, dar nu imposibil! Cu ${ore} ore concentrate pe tiparele de subiecte la ${materie}, îți maximizăm șansele de trecere. Tarif urgență: ${pret}.`;
+      } else if (nivel === 'zero') {
+        icon = '📚';
+        const ore = timp === 'scurt' ? '6-10' : '10-16';
+        title = `Pachetul 5 Garantat — ~${ore} ore`;
+        desc = `Plecăm de la zero la ${materie}. În ${ore} ore acoperim bazele și tiparele de examen. ${pret}.`;
+      } else if (nivel === 'avansat') {
+        icon = '🚀';
+        pachet = 'Modul Prestanță';
+        const ore = timp === 'scurt' ? '4-6' : '6-10';
+        title = `Modul Prestanță — ~${ore} ore`;
+        desc = `Pregătire avansată la ${materie} pentru nota 9-10. Subiecte capcană și exerciții complexe. ${pret}.`;
+      } else {
+        const ore = timp === 'scurt' ? '4-6' : '6-10';
+        title = `${pachet} — ~${ore} ore`;
+        desc = `Ai o bază la ${materie}, deci ne concentrăm pe exerciții și lacune. ${pret}.`;
+      }
+
+      const iconEl = document.getElementById('calc-result-icon');
+      const titleEl = document.getElementById('calc-result-title');
+      const descEl = document.getElementById('calc-result-desc');
+      const ctaEl = document.getElementById('calc-result-cta') as HTMLAnchorElement;
+
+      if (iconEl) iconEl.textContent = icon;
+      if (titleEl) titleEl.textContent = title;
+      if (descEl) descEl.textContent = desc;
+
+      const msg = encodeURIComponent(`Salut! Am făcut calculatorul pe site. Am nevoie de ${pachet} la ${materie}. Când ai disponibilitate?`);
+      if (ctaEl) ctaEl.href = `https://wa.me/NUMAR_TAU?text=${msg}`;
+    }
+
+    // Reset
+    document.getElementById('calc-reset')?.addEventListener('click', () => {
+      Object.keys(state).forEach(k => delete state[k]);
+      wizard.querySelectorAll('.calculator__step').forEach(s => s.classList.remove('calculator__step--active'));
+      wizard.querySelector('[data-step="1"]')?.classList.add('calculator__step--active');
+      wizard.querySelectorAll('.calculator__option').forEach(o => o.classList.remove('calculator__option--selected'));
+      wizard.querySelectorAll('.calculator__progress-bar').forEach((bar, i) => {
+        bar.classList.toggle('calculator__progress-bar--active', i === 0);
+      });
+    });
+  }
+</script>

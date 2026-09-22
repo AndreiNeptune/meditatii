@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import IconCompass from '../components/icons/IconCompass.astro';
+import FAQ from '../components/FAQ.astro';
+---
+
+<BaseLayout
+  title="Meditații Geometrie Descriptivă (GD) Politehnică | Explicat Pas cu Pas"
+  description="Nu înțelegi epura, intersecțiile sau secțiunile? Meditații GD pentru studenții UNSTPB. Treci de la 3D la nota 10 fără bătăi de cap!"
+  currentPage="/meditatii-geometrie-descriptiva"
+  whatsappMaterie="Geometrie Descriptivă"
+>
+
+  <!-- HERO -->
+  <section class="hero hero--subject">
+    <div class="hero__grid"></div>
+    <div class="container">
+      <div class="hero__content">
+        <IconCompass class="hero__icon" size={64} />
+        <p class="hero__pretitle">Geometrie Descriptivă (GD)</p>
+        <h1 class="hero__title">Învață să <span>"vezi" în spațiu</span></h1>
+        <p class="hero__subtitle">
+          GD este o disciplină inginerească fundamentală, dar la curs te simți pierdut? Te învăț să treci de la piese 3D la epure 2D riguroase. <strong>Punem accentul pe a înțelege logic pașii de execuție</strong> — la examen vei ști exact cu ce linie să începi și cum să finalizezi intersecțiile.
+        </p>
+        <div class="hero__actions">
+          <a href="https://wa.me/NUMAR_TAU?text=Salut!%20Am%20nevoie%20de%20ajutor%20la%20Geometrie%20Descriptivă.%20Când%20ai%20disponibilitate?" target="_blank" rel="noopener" class="btn btn--whatsapp">
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.126 1.52 5.867L.057 23.306a.75.75 0 0 0 .92.92l5.44-1.463A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            Scrie-mi pe WhatsApp
+          </a>
+        </div>
+        <p class="hero__micro">120 lei/oră • 150 lei/oră urgențe</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS -->
+  <section class="section">
+    <div class="container">
+      <div class="reveal">
+        <p class="section__pretitle">Ce abordăm la GD</p>
+        <h2 class="section__title">Programa detaliată — învățăm să rezolvăm grafic probleme spațiale</h2>
+      </div>
+
+      <div class="topic reveal">
+        <div class="topic__icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+        </div>
+        <div class="topic__content">
+          <h3 class="topic__title">1. Reprezentarea elementelor fundamentale (Punct, Dreaptă, Plan)</h3>
+          <div class="topic__list">
+            <div class="topic__item"><strong>Punctul:</strong> Poziționarea în spațiu prin coordonate 3D (x, y, z) raportate la planele de proiecție [H] și [V].</div>
+            <div class="topic__item"><strong>Dreapta:</strong> Proiecțiile orizontală și verticală, determinarea urmelor dreptei (h, v). Drepte de front, de nivel, de capăt.</div>
+            <div class="topic__item"><strong>Planul:</strong> Definirea prin urme sau prin două drepte. Plane de nivel, plane verticale, plane proiectante.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic reveal">
+        <div class="topic__icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"/><line x1="4" y1="20" x2="20" y2="4"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="topic__content">
+          <h3 class="topic__title">2. Probleme de incidență și intersecție</h3>
+          <div class="topic__list">
+            <div class="topic__item">Intersecția dintre o dreaptă și un plan oarecare — pașii de construcție explicați pe larg.</div>
+            <div class="topic__item">Intersecția dintre două plane (ex: plan oarecare cu plan de nivel).</div>
+            <div class="topic__item">Construcția dreptelor perpendiculare pe un plan dintr-un punct dat din spațiu.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic reveal">
+        <div class="topic__icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M8 3v18M16 3v18"/></svg>
+        </div>
+        <div class="topic__content">
+          <h3 class="topic__title">3. Secțiuni plane în corpuri geometrice</h3>
+          <div class="topic__list">
+            <div class="topic__item">Secționarea corpurilor (cilindri, conuri, poliedre) cu diverse plane.</div>
+            <div class="topic__item">Determinarea proiecțiilor curbei de secțiune (elipse) și stabilirea formei reale.</div>
+            <div class="topic__item">Ex: cilindru circular oblic secționat cu un plan proiectant vertical.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic reveal">
+        <div class="topic__icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/><path d="M6 4v16"/></svg>
+        </div>
+        <div class="topic__content">
+          <h3 class="topic__title">4. Desfășurarea suprafețelor (Desfășurate)</h3>
+          <div class="topic__list">
+            <div class="topic__item">Aplatizarea suprafețelor (ex: desfășurata unui cilindru oblic secționat).</div>
+            <div class="topic__item">Transpunerea lungimilor reale ale generatoarelor și trasarea sinusoidelor pe desfășurată.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic reveal">
+        <div class="topic__icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><circle cx="15" cy="15" r="6"/></svg>
+        </div>
+        <div class="topic__content">
+          <h3 class="topic__title">5. Intersecția suprafețelor și a corpurilor</h3>
+          <div class="topic__list">
+            <div class="topic__item">Determinarea curbei spațiale rezultate din pătrunderea a două corpuri.</div>
+            <div class="topic__item">Ex: Intersecția dintre doi cilindri cu generatoare de front și de capăt.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AJUTOR TEME -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="solution-box reveal">
+        <svg class="solution-box__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><polyline points="16 13 12 17 8 13"/></svg>
+        <div>
+          <h3 style="margin-bottom: 0.5rem;">Ajutor la Teme și Planșe</h3>
+          <p>Ai de făcut o epură și nu știi care e prima linie? Nu îți desenez planșa ca tu să te uiți — o <strong>facem împreună</strong>. Calculăm mărimile reale, găsim intersecțiile, și la final pleci cu planșa gata și cu lecția înțeleasă 100%.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div class="reveal">
+    <FAQ />
+  </div>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section reveal">
+    <div class="container">
+      <h2 class="cta-section__title">Ai o planșă de predat sau examen la GD?</h2>
+      <p class="cta-section__desc section__subtitle">Scrie-mi pe WhatsApp cu subiectul tău și stabilim prima ședință.</p>
+      <a href="https://wa.me/NUMAR_TAU?text=Salut!%20Am%20nevoie%20de%20ajutor%20la%20Geometrie%20Descriptivă.%20Când%20ai%20disponibilitate?" target="_blank" rel="noopener" class="btn btn--whatsapp">
+        <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.126 1.52 5.867L.057 23.306a.75.75 0 0 0 .92.92l5.44-1.463A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        Programează pe WhatsApp
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

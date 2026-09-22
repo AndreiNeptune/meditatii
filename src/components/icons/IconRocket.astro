@@ -1,0 +1,18 @@
+---
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 48, class: className = '' } = Astro.props;
+---
+<svg class={className} width={size} height={size} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rocket / arrow up - Modul Prestanță -->
+  <path d="M24 4C24 4 18 14 18 28L24 32L30 28C30 14 24 4 24 4Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="currentColor" opacity="0.1"/>
+  <circle cx="24" cy="18" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+  <!-- Fins -->
+  <path d="M18 26L12 34L18 30" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="currentColor" opacity="0.15"/>
+  <path d="M30 26L36 34L30 30" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="currentColor" opacity="0.15"/>
+  <!-- Flame -->
+  <path d="M21 32C21 32 22 38 24 40C26 38 27 32 27 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M22 34C22 34 23 42 24 44C25 42 26 34 26 34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+</svg>

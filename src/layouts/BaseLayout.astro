@@ -1,0 +1,86 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFAB from '../components/WhatsAppFAB.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  currentPage?: string;
+  whatsappMaterie?: string;
+}
+
+const { title, description, currentPage = '', whatsappMaterie = 'o materie de la Poli' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ro_RO" />
+
+  <title>{title}</title>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- GTM placeholder - replace GTM-XXXXX with your container ID -->
+  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXX');</script> -->
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Meditații Poli UNSTPB",
+    "description": "Meditații pentru studenții Politehnicii din București. Geometrie Descriptivă, Analiză Matematică, Mecanică, Desen Tehnic.",
+    "url": "https://meditatii-poli.ro",
+    "areaServed": "București",
+    "priceRange": "120-150 RON/oră",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "București",
+      "addressRegion": "B",
+      "addressCountry": "RO"
+    }
+  })} />
+</head>
+<body>
+  <!-- GTM noscript placeholder -->
+  <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+
+  <Navbar currentPage={currentPage} />
+
+  <main>
+    <slot />
+  </main>
+
+  <Footer />
+  <WhatsAppFAB materie={whatsappMaterie} />
+
+  <!-- Scroll reveal observer -->
+  <script>
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal--visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
