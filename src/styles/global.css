@@ -5,6 +5,8 @@
 
 /* ── Google Fonts ── */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+/* Importăm Montserrat doar pentru caracterele numerice și simbolurile matematice (+, -, %, ., ,) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&text=0123456789%25%2C.%2B-');
 
 /* ── Design Tokens ── */
 :root {
@@ -50,8 +52,8 @@
   --shadow-glow-warm: 0 0 30px rgba(253, 126, 20, 0.2);
 
   /* Typography */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Montserrat', 'Space Grotesk', 'Inter', sans-serif;
 
   /* Spacing */
   --space-xs: 0.25rem;
