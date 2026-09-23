@@ -67,7 +67,7 @@ export const formSchema = z.object({
   loadTime: z.number().optional(), // timestamp pentru anti-spam
   
   acord_legal: z.literal('Da', {
-    errorMap: () => ({ message: 'Trebuie să fii de acord cu Termenii și Condițiile pentru a continua.' })
+    message: 'Trebuie să fii de acord cu Termenii și Condițiile pentru a continua.'
   })
 }).refine(data => {
   if (data.newsletter === 'Da') {
