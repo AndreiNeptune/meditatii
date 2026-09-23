@@ -84,15 +84,14 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
     }
     .hero__visual {
       position: absolute;
-      top: -100px; /* O ducem și mai sus ca să ascundem bara ei de sus, care interfera cu logo-ul */
+      top: -60px; /* Coborâtă un pic ca să nu fie exagerat de sus, dar destul cât să ascundă rama */
       left: 50%;
       transform: translateX(-50%);
       width: 150%; 
       max-width: 600px;
       z-index: 0;
-      opacity: 0.35; /* O facem mult mai transparentă ca fundalul negru să domine */
-      /* O facem și mai întunecată ca să nu deranjeze deloc textul */
-      filter: brightness(0.4) drop-shadow(0 0 20px rgba(0,0,0,1)); 
+      opacity: 0.45; /* Ușor mai deschisă */
+      filter: brightness(0.6) drop-shadow(0 0 20px rgba(0,0,0,1)); 
       mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
       -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
       pointer-events: none; 
