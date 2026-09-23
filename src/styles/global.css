@@ -880,6 +880,7 @@ p {
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  padding-top: var(--space-md);
   padding-bottom: var(--space-md);
 }
 
