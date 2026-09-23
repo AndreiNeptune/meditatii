@@ -169,9 +169,13 @@
             </label>
           </div>
 
-          <small style="color: var(--text-muted); display: block; text-align: center; line-height: 1.4; margin-top: 0.5rem;">
-            Prin trimiterea acestui formular ești de acord cu Termenii și Condițiile pentru prelucrarea datelor în vederea contactării.
-          </small>
+          <div class="form-group checkbox-group" style="margin-top: 0.5rem; padding: 0.8rem; background: rgba(108, 92, 231, 0.05); border-radius: var(--radius-md);">
+            <label class="checkbox-label" style="align-items: flex-start;">
+              <input type="checkbox" id="f_acord_legal">
+              <span style="font-size: 0.85rem; line-height: 1.4;">Sunt de acord cu <a href="/termeni-si-conditii" target="_blank" style="color: var(--accent); text-decoration: underline;">Termenii și Condițiile</a> și <a href="/politica-de-confidentialitate" target="_blank" style="color: var(--accent); text-decoration: underline;">Politica de Confidențialitate</a>.</span>
+            </label>
+            <div id="error-f_acord_legal" class="field-error"></div>
+          </div>
 
           <div id="error-step5" style="color: var(--accent-red); font-size: 0.9rem; font-weight: 500; display: none; margin-top: 0.5rem; text-align: center;"></div>
 
@@ -484,6 +488,7 @@
       const mentiuni = (document.getElementById('f_mentiuni') as HTMLTextAreaElement)?.value || '';
       const email = (document.getElementById('f_email') as HTMLInputElement)?.value || '';
       const newsletter = (document.getElementById('f_newsletter') as HTMLInputElement)?.checked ? 'Da' : 'Nu';
+      const acordLegal = (document.getElementById('f_acord_legal') as HTMLInputElement)?.checked ? 'Da' : 'Nu';
 
       const rawData = {
         materie: state.step1,
@@ -501,13 +506,14 @@
         mentiuni: mentiuni,
         sursa: window.location.href,
         b_website: honeypot,
-        loadTime: loadTime
+        loadTime: loadTime,
+        acord_legal: acordLegal
       };
 
       const result = formSchema.safeParse(rawData);
       
       // Clear all field errors first
-      ['nume', 'telefon', 'email'].forEach(id => {
+      ['nume', 'telefon', 'email', 'acord_legal'].forEach(id => {
         const el = document.getElementById('error-f_' + id);
         if (el) { el.style.display = 'none'; el.innerHTML = ''; }
       });

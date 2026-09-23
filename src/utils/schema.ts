@@ -64,7 +64,11 @@ export const formSchema = z.object({
   
   b_website: z.string().optional().default(''), // honeypot
   
-  loadTime: z.number().optional() // timestamp pentru anti-spam
+  loadTime: z.number().optional(), // timestamp pentru anti-spam
+  
+  acord_legal: z.literal('Da', {
+    errorMap: () => ({ message: 'Trebuie să fii de acord cu Termenii și Condițiile pentru a continua.' })
+  })
 });
 
 export type FormData = z.infer<typeof formSchema>;
