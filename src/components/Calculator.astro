@@ -126,7 +126,9 @@
             <textarea id="f_mentiuni" class="form-input" placeholder="Dacă vrei mai multe ore sau să modifici ceva la pachet, scrie aici..." rows="2" style="resize: vertical;"></textarea>
           </div>
 
-          <button class="btn btn--primary" id="btn-to-step5" style="width: 100%; justify-content: center; margin-top: 1rem;">
+          <div id="error-step4" style="color: var(--accent-red); font-size: 0.9rem; font-weight: 500; display: none; margin-top: 0.5rem; text-align: center;"></div>
+
+          <button class="btn btn--primary" id="btn-to-step5" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
             Ultimul pas →
           </button>
         </div>
@@ -147,8 +149,8 @@
           </div>
 
           <div class="form-group">
-            <label for="f_telefon">Număr de WhatsApp (opțional, dar recomandat)</label>
-            <input type="tel" id="f_telefon" class="form-input" placeholder="07XX XXX XXX">
+            <label for="f_telefon">Număr de WhatsApp</label>
+            <input type="tel" id="f_telefon" class="form-input" placeholder="07XX XXX XXX" required>
             <small style="color: var(--text-muted); display: block; margin-top: 0.25rem;">Ca să te putem contacta direct dacă se pierde mesajul.</small>
           </div>
 
@@ -168,7 +170,9 @@
             Prin trimiterea acestui formular ești de acord cu Termenii și Condițiile pentru prelucrarea datelor în vederea contactării.
           </small>
 
-          <button class="btn btn--whatsapp" id="btn-submit-funnel" style="width: 100%; justify-content: center; margin-top: 1rem;">
+          <div id="error-step5" style="color: var(--accent-red); font-size: 0.9rem; font-weight: 500; display: none; margin-top: 0.5rem; text-align: center;"></div>
+
+          <button class="btn btn--whatsapp" id="btn-submit-funnel" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
             <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
             </svg>
@@ -428,16 +432,22 @@
       const acordOnline = (document.getElementById('f_acord_online') as HTMLInputElement).checked;
       const acord = (document.getElementById('f_acord_pret') as HTMLInputElement).checked;
 
+      const errorEl = document.getElementById('error-step4');
+      if (errorEl) {
+        errorEl.style.display = 'none';
+        errorEl.textContent = '';
+      }
+
       if (!fac || !an || !subiecte) {
-        alert('Te rog să completezi toate câmpurile.');
+        if (errorEl) { errorEl.textContent = 'Te rog să completezi toate câmpurile (facultate, an, subiecte).'; errorEl.style.display = 'block'; }
         return;
       }
       if (!acordOnline) {
-        alert('Trebuie să confirmi că ești de acord cu desfășurarea meditațiilor exclusiv online.');
+        if (errorEl) { errorEl.textContent = 'Trebuie să confirmi că ești de acord cu desfășurarea meditațiilor exclusiv online.'; errorEl.style.display = 'block'; }
         return;
       }
       if (!acord) {
-        alert('Trebuie să fii de acord cu tariful pentru a continua.');
+        if (errorEl) { errorEl.textContent = 'Trebuie să fii de acord cu tariful pentru a continua.'; errorEl.style.display = 'block'; }
         return;
       }
 
@@ -456,10 +466,19 @@
       const nume = (document.getElementById('f_nume') as HTMLInputElement).value;
       const telefon = (document.getElementById('f_telefon') as HTMLInputElement).value;
 
-      if (!nume) {
-        alert('Te rog să introduci numele.');
+      const errorEl = document.getElementById('error-step5');
+      if (errorEl) {
+        errorEl.style.display = 'none';
+        errorEl.textContent = '';
+      }
+
+      if (!nume || !telefon) {
+        if (errorEl) { errorEl.textContent = 'Te rog să introduci numele și numărul de telefon pentru a te putea contacta.'; errorEl.style.display = 'block'; }
         return;
       }
+      
+      // Basic sanitization ("securitate")
+      const sanitize = (str: string) => str.replace(/[<>]/g, '');
 
       state.nume = nume;
       state.telefon = telefon;
@@ -476,22 +495,22 @@
       const email = (document.getElementById('f_email') as HTMLInputElement)?.value || '';
       const newsletter = (document.getElementById('f_newsletter') as HTMLInputElement)?.checked ? 'Da' : 'Nu';
 
-      // Prepare payload
+      // Prepare payload with sanitized data
       const payload = {
         materie: state.step1,
         nivel_initial: state.step2,
         timp_ramas: state.step3,
         pachet_recomandat: state.calculatedPackage,
         pret: state.calculatedPrice,
-        facultate: state.facultate,
-        an: state.an,
+        facultate: sanitize(state.facultate),
+        an: sanitize(state.an),
         are_subiecte: state.subiecte,
-        nume: state.nume,
-        telefon: state.telefon,
-        email: email,
+        nume: sanitize(state.nume),
+        telefon: sanitize(state.telefon),
+        email: sanitize(email),
         newsletter: newsletter,
-        mentiuni: mentiuni,
-        sursa: window.location.href,
+        mentiuni: sanitize(mentiuni),
+        sursa: sanitize(window.location.href),
         b_website: honeypot
       };
 
