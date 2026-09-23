@@ -11,9 +11,9 @@
     </div>
   </div>
 
-  <!-- Tabla dezordonată (inițial sus) care va coborî -->
+  <!-- Tabla dezordonată (inițial sus) care va coborî și se va clarifica -->
   <div class="board-messy" id="board-messy">
-    <div class="board-surface">
+    <div class="board-surface" id="messy-surface" style="transition: opacity 0.3s ease;">
       <img src="/problema de cinematica mecanica 2.webp" class="chalk-img messy-img-1" alt="Formule amestecate 1" />
       <img src="/constructie piramida.webp" class="chalk-img messy-img-2" alt="Formule amestecate 2" />
       <img src="/desfasurata cilindru.webp" class="chalk-img messy-img-3" alt="Formule amestecate 3" />
@@ -21,6 +21,11 @@
       <img src="/intersectie tip patrundere.webp" class="chalk-img messy-img-5" alt="Formule amestecate 5" />
       <img src="/desfasurata con.webp" class="chalk-img messy-img-6" alt="Formule amestecate 6" />
       <img src="/sectiune cilindru.webp" class="chalk-img messy-img-7" alt="Formule amestecate 7" />
+    </div>
+    <div class="board-surface" id="messy-clean-surface" style="position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.3s ease;">
+      <!-- Noile poze clare și ordonate care apar după jumătate din animație -->
+      <img src="/desfasurata con.webp" class="chalk-img clean-img-1" alt="Solutie noua 1" />
+      <img src="/plan definit de 2 drepte paralele.webp" class="chalk-img clean-img-2" alt="Solutie noua 2" />
     </div>
   </div>
 
@@ -133,6 +138,18 @@
       
       boardMessy.style.transform = `translateY(${slideAmount}%)`;
       boardClean.style.transform = `translateY(-${slideAmount}%)`;
+
+      // Când trece de jumătate (progress > 0.5), schimbăm pozele dezordonate în unele clare
+      const messySurface = document.getElementById('messy-surface');
+      const messyCleanSurface = document.getElementById('messy-clean-surface');
+      
+      if (progress > 0.45) { // puțin înainte de 0.5 ca să fie smooth la intersecție
+        messySurface.style.opacity = '0';
+        messyCleanSurface.style.opacity = '1';
+      } else {
+        messySurface.style.opacity = '1';
+        messyCleanSurface.style.opacity = '0';
+      }
     }, { passive: true });
   });
 </script>
