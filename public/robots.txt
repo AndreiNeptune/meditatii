@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://meditatii.vercel.app/sitemap-index.xml

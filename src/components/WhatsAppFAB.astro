@@ -1,10 +1,11 @@
 ---
 interface Props {
   materie?: string;
+  waNumber?: string;
 }
-const { materie = 'o materie de la Poli' } = Astro.props;
+const { materie = 'o materie de la Poli', waNumber = '40750208299' } = Astro.props;
 const encodedMessage = encodeURIComponent(`Salut! Sunt student la Poli și am nevoie de ajutor la ${materie}. Când aveți disponibilitate?`);
-const whatsappUrl = `https://wa.me/NUMAR_TAU?text=${encodedMessage}`;
+const whatsappUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
 ---
 
 <div class="whatsapp-fab" id="whatsapp-fab">

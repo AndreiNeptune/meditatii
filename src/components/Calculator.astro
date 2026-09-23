@@ -1,7 +1,8 @@
 ---
+const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
 ---
 
-<section class="section" id="calculator">
+<section class="section" id="calculator" data-wa-number={waNumber}>
   <div class="container" style="text-align: center;">
     <p class="section__pretitle">Sistem de calificare</p>
     <h2 class="section__title">Configurează-ți pachetul de meditații</h2>
@@ -551,10 +552,10 @@
       }
 
       // Disable button
+      // Loading state
       const ogText = btn.innerHTML;
-      btn.innerHTML = 'Se procesează...';
+      btn.innerHTML = 'Se trimite...';
       btn.disabled = true;
-
       const payload = result.data;
 
       // Apelăm endpoint-ul nostru de Astro SSR
@@ -575,13 +576,13 @@
       }
       msg += `Când am putea începe?`;
       const encodedMsg = encodeURIComponent(msg);
-      // Pui numarul tau real aici
-      const waUrl = `https://wa.me/NUMAR_TAU?text=${encodedMsg}`;
+      const waUrl = `https://wa.me/${document.getElementById('calculator').dataset.waNumber}?text=${encodedMsg}`;
 
-      // Redirect
-      window.location.href = waUrl;
+      // Open WhatsApp in new tab and redirect to Thank You page
+      window.open(waUrl, '_blank');
+      window.location.href = '/multumim';
       
-      // Reset after a delay
+      // Reset after a delay (in case redirect is blocked)
       setTimeout(() => {
         btn.innerHTML = ogText;
         btn.disabled = false;

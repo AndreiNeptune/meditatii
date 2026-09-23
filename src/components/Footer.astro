@@ -1,4 +1,6 @@
 ---
+interface Props { waNumber?: string; }
+const { waNumber = '40750208299' } = Astro.props;
 ---
 
 <footer class="footer">
@@ -33,7 +35,7 @@
         <h4 class="footer__heading">Companie & Contact</h4>
         <div class="footer__links">
           <a href="/despre-noi" class="footer__link">Despre Noi</a>
-          <a href="https://wa.me/NUMAR_TAU" target="_blank" rel="noopener" class="footer__link">WhatsApp</a>
+          <a href={`https://wa.me/${waNumber}`} target="_blank" rel="noopener" class="footer__link">WhatsApp</a>
           <span class="footer__link" style="cursor:default;">Exclusiv Online (Discord / Meet)</span>
           <span class="footer__link" style="cursor:default;">Orar Flexibil (inclusiv weekend)</span>
           <span class="footer__link" style="cursor:default;">120 lei/oră | 150 lei/oră urgențe</span>

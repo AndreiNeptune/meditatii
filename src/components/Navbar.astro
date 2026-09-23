@@ -1,8 +1,9 @@
 ---
 interface Props {
   currentPage?: string;
+  waNumber?: string;
 }
-const { currentPage = '' } = Astro.props;
+const { currentPage = '', waNumber = '40750208299' } = Astro.props;
 
 const navLinks = [
   { href: '/meditatii-geometrie-descriptiva', label: 'GD', short: 'GD' },
@@ -52,7 +53,7 @@ const navLinks = [
         </a>
       ))}
       <a
-        href="https://wa.me/NUMAR_TAU?text=Salut!%20Am%20nevoie%20de%20ajutor%20la%20o%20materie%20de%20la%20Poli."
+        href={`https://wa.me/${waNumber}?text=Salut!%20Am%20nevoie%20de%20ajutor%20la%20o%20materie%20de%20la%20Poli.`}
         target="_blank"
         rel="noopener"
         class="btn btn--whatsapp navbar__cta"
@@ -78,7 +79,7 @@ const navLinks = [
       <a href={link.href} class="navbar__mobile-link">{link.label}</a>
     ))}
     <a
-      href="https://wa.me/NUMAR_TAU?text=Salut!%20Am%20nevoie%20de%20ajutor%20la%20o%20materie%20de%20la%20Poli."
+      href={`https://wa.me/${waNumber}?text=Salut!%20Am%20nevoie%20de%20ajutor%20la%20o%20materie%20de%20la%20Poli.`}
       target="_blank"
       rel="noopener"
       class="btn btn--whatsapp"

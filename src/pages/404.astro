@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="404 — Pagina nu a fost găsită | Meditații Poli"
+  description="Pagina pe care o cauți nu există."
+>
+
+  <section class="hero" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+    <div class="container">
+      <p style="font-size: 8rem; font-weight: 800; line-height: 1; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">404</p>
+      <h1 class="hero__title" style="font-size: 2rem;">Pagina nu a fost găsită</h1>
+      <p class="hero__subtitle" style="max-width: 500px; margin: 1rem auto 2rem;">
+        Se pare că ai nimerit pe o pagină care nu există. Poate ai scris greșit adresa, sau pagina a fost mutată.
+      </p>
+      <div class="hero__actions" style="justify-content: center;">
+        <a href="/" class="btn btn--primary">← Înapoi acasă</a>
+        <a href="/#materii" class="btn btn--outline">Vezi materiile</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
