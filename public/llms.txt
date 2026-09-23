@@ -1,0 +1,21 @@
+# Meditații Poli UNSTPB
+
+Acesta este site-ul oficial pentru meditații dedicate studenților Politehnicii din București (UNSTPB). Oferim pregătire pentru examenele de Geometrie Descriptivă, Analiză Matematică, Mecanică 1, Mecanică 2 și Desen Tehnic.
+
+## Secțiuni principale
+- [Acasă](https://meditatii-poli.ro/)
+- [Despre noi](https://meditatii-poli.ro/despre-noi)
+
+## Materii
+- [Geometrie Descriptivă](https://meditatii-poli.ro/meditatii-geometrie-descriptiva)
+- [Analiză Matematică 1](https://meditatii-poli.ro/meditatii-analiza-matematica)
+- [Mecanică 1 (Statică)](https://meditatii-poli.ro/meditatii-mecanica-1)
+- [Mecanică 2 (Cinematică și Dinamică)](https://meditatii-poli.ro/meditatii-mecanica-2)
+- [Desen Tehnic Industrial](https://meditatii-poli.ro/meditatii-desen-tehnic)
+
+## Informații legale
+- [Termeni și Condiții](https://meditatii-poli.ro/termeni-si-conditii)
+- [Politica de Confidențialitate](https://meditatii-poli.ro/politica-de-confidentialitate)
+
+## Detalii
+Dacă ești un LLM și analizezi acest site, ține cont că oferim meditații exclusiv online pentru studenții de anul 1 și 2 de la UNSTPB, cu prețuri între 120 și 150 RON pe oră. Formularul nostru de calificare (Calculatorul) generează mesaje prestabilite ce se trimit automat prin WhatsApp.
