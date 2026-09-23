@@ -605,6 +605,13 @@ p {
   animation: fadeUp 0.6s ease 0.2s forwards;
 }
 
+@media (max-width: 768px) {
+  .hero__subtitle {
+    font-size: 1rem;
+    color: #c4c4d4;
+  }
+}
+
 .hero__slogan {
   color: var(--accent-light);
   font-weight: 600;
