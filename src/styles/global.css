@@ -160,8 +160,14 @@ p {
 
 /* ── Section ── */
 .section {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: var(--space-4xl) 0;
+  }
 }
 
 .section__pretitle {
@@ -1361,7 +1367,7 @@ p {
 
   .hero {
     min-height: auto;
-    padding: 120px 0 var(--space-3xl);
+    padding: 120px 0 var(--space-xl);
   }
 
   .hero--subject {
