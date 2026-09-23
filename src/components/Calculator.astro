@@ -141,7 +141,7 @@
         
         <div class="funnel-form">
           <!-- Honeypot Field (Hidden from real users) -->
-          <input type="text" id="b_website" name="b_website" style="display:none" tabindex="-1" autocomplete="off" placeholder="Nu completa acest câmp">
+          <input type="text" id="b_website" name="b_website" style="opacity: 0; position: absolute; pointer-events: none; z-index: -1;" tabindex="-1" autocomplete="off" placeholder="Nu completa acest câmp">
 
           <div class="form-group">
             <label for="f_nume">Cum te numești?</label>
@@ -290,6 +290,9 @@
 </style>
 
 <script>
+  import { formSchema } from '../utils/schema';
+  const loadTime = Date.now();
+
   const wizard = document.getElementById('calc-wizard');
   if (wizard) {
     const state: Record<string, string> = {};
@@ -465,54 +468,54 @@
       const btn = e.currentTarget as HTMLButtonElement;
       const nume = (document.getElementById('f_nume') as HTMLInputElement).value;
       const telefon = (document.getElementById('f_telefon') as HTMLInputElement).value;
+      
+      const honeypot = (document.getElementById('b_website') as HTMLInputElement).value;
+      const mentiuni = (document.getElementById('f_mentiuni') as HTMLTextAreaElement)?.value || '';
+      const email = (document.getElementById('f_email') as HTMLInputElement)?.value || '';
+      const newsletter = (document.getElementById('f_newsletter') as HTMLInputElement)?.checked ? 'Da' : 'Nu';
 
+      const rawData = {
+        materie: state.step1,
+        nivel_initial: state.step2,
+        timp_ramas: state.step3,
+        pachet_recomandat: state.calculatedPackage,
+        pret: state.calculatedPrice,
+        facultate: state.facultate,
+        an: state.an,
+        are_subiecte: state.subiecte,
+        nume: nume,
+        telefon: telefon,
+        email: email,
+        newsletter: newsletter,
+        mentiuni: mentiuni,
+        sursa: window.location.href,
+        b_website: honeypot,
+        loadTime: loadTime
+      };
+
+      const result = formSchema.safeParse(rawData);
+      
       const errorEl = document.getElementById('error-step5');
       if (errorEl) {
         errorEl.style.display = 'none';
-        errorEl.textContent = '';
+        errorEl.innerHTML = '';
       }
 
-      if (!nume || !telefon) {
-        if (errorEl) { errorEl.textContent = 'Te rog să introduci numele și numărul de telefon pentru a te putea contacta.'; errorEl.style.display = 'block'; }
+      if (!result.success) {
+        if (errorEl) {
+          const errorMsgs = result.error.issues.map(i => i.message).join('<br/>');
+          errorEl.innerHTML = errorMsgs;
+          errorEl.style.display = 'block';
+        }
         return;
       }
-      
-      // Basic sanitization ("securitate")
-      const sanitize = (str: string) => str.replace(/[<>]/g, '');
-
-      state.nume = nume;
-      state.telefon = telefon;
 
       // Disable button
       const ogText = btn.innerHTML;
       btn.innerHTML = 'Se procesează...';
       btn.disabled = true;
 
-      // Adăugăm honeypot-ul în payload
-      const honeypot = (document.getElementById('b_website') as HTMLInputElement).value;
-
-      const mentiuni = (document.getElementById('f_mentiuni') as HTMLTextAreaElement)?.value || '';
-      const email = (document.getElementById('f_email') as HTMLInputElement)?.value || '';
-      const newsletter = (document.getElementById('f_newsletter') as HTMLInputElement)?.checked ? 'Da' : 'Nu';
-
-      // Prepare payload with sanitized data
-      const payload = {
-        materie: state.step1,
-        nivel_initial: state.step2,
-        timp_ramas: state.step3,
-        pachet_recomandat: state.calculatedPackage,
-        pret: state.calculatedPrice,
-        facultate: sanitize(state.facultate),
-        an: sanitize(state.an),
-        are_subiecte: state.subiecte,
-        nume: sanitize(state.nume),
-        telefon: sanitize(state.telefon),
-        email: sanitize(email),
-        newsletter: newsletter,
-        mentiuni: sanitize(mentiuni),
-        sursa: sanitize(window.location.href),
-        b_website: honeypot
-      };
+      const payload = result.data;
 
       // Apelăm endpoint-ul nostru de Astro SSR
       try {

@@ -1,10 +1,24 @@
 import type { APIRoute } from 'astro';
+import { formSchema } from '../../utils/schema';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const data = await request.json();
+    const rawData = await request.json();
 
-    // 1. Validare Honeypot (Dacă bot-ul a completat câmpul invizibil, respingem)
+    // 1. Zod Server-Side Strict Validation (Strat 5)
+    const result = formSchema.safeParse(rawData);
+    
+    if (!result.success) {
+      console.warn('Server validation failed:', result.error.errors);
+      return new Response(JSON.stringify({ error: 'Date invalide trimise către server.' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    const data = result.data;
+
+    // 2. Validare Anti-Spam - Honeypot (Strat 3)
     if (data.b_website && data.b_website.length > 0) {
       console.warn('Bot detectat (Honeypot completat)');
       return new Response(JSON.stringify({ success: true }), {
@@ -13,10 +27,21 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Eliminăm honeypot-ul din datele finale
-    delete data.b_website;
+    // 3. Validare Anti-Spam - Timp (Strat 3)
+    const submitTime = Date.now();
+    if (data.loadTime && (submitTime - data.loadTime < 3000)) {
+      console.warn('Bot detectat (Sub 3 secunde de la randare la submit)');
+      return new Response(JSON.stringify({ success: true }), {
+        status: 200, // Fals pozitiv pentru boți
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
 
-    // 2. Adăugăm timestamp generat pe server
+    // Eliminăm honeypot-ul și loadTime-ul din datele finale
+    delete (data as any).b_website;
+    delete (data as any).loadTime;
+
+    // 4. Adăugăm timestamp generat pe server
     const serverTimestamp = new Date().toISOString();
     
     const payload = {
@@ -24,7 +49,7 @@ export const POST: APIRoute = async ({ request }) => {
       timestamp: serverTimestamp
     };
 
-    // 3. Trimitem către Google Apps Script (URL ascuns)
+    // 5. Trimitem către Google Apps Script (URL ascuns)
     const scriptUrl = import.meta.env.GOOGLE_SCRIPT_URL || process.env.GOOGLE_SCRIPT_URL;
 
     if (!scriptUrl) {
@@ -54,7 +79,8 @@ export const POST: APIRoute = async ({ request }) => {
 
   } catch (error) {
     console.error('Eroare la procesarea webhook-ului:', error);
-    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
+    // Generic error to prevent Information Disclosure (Strat 4)
+    return new Response(JSON.stringify({ error: 'A apărut o eroare de rețea.' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });
