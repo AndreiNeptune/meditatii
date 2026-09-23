@@ -91,3 +91,49 @@
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.testimonials-track');
+    if (!track) return;
+
+    // Clone the cards for infinite scroll
+    const cards = Array.from(track.children);
+    cards.forEach(card => {
+      const clone = card.cloneNode(true);
+      track.appendChild(clone);
+    });
+
+    let isHovered = false;
+    let scrollSpeed = 0.5; // adjust for speed
+
+    // Pause on hover
+    track.addEventListener('mouseenter', () => isHovered = true);
+    track.addEventListener('mouseleave', () => isHovered = false);
+    
+    // Pause on touch interactions
+    track.addEventListener('touchstart', () => isHovered = true, { passive: true });
+    track.addEventListener('touchend', () => {
+      // Resume after a short delay so manual scroll momentum finishes
+      setTimeout(() => isHovered = false, 1000);
+    });
+
+    function autoScroll() {
+      if (!isHovered) {
+        track.scrollLeft += scrollSpeed;
+        
+        // When scrolled past the first set of items (scrollWidth / 2)
+        // Reset to 0 to create an infinite loop
+        if (track.scrollLeft >= track.scrollWidth / 2) {
+          track.scrollLeft = 0;
+        }
+      }
+      requestAnimationFrame(autoScroll);
+    }
+
+    // Start auto-scroll after a short delay
+    setTimeout(() => {
+      requestAnimationFrame(autoScroll);
+    }, 500);
+  });
+</script>
