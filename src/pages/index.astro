@@ -8,6 +8,7 @@ import IconRuler from '../components/icons/IconRuler.astro';
 import Calculator from '../components/Calculator.astro';
 import Testimonials from '../components/Testimonials.astro';
 import FAQ from '../components/FAQ.astro';
+import '../styles/board.css';
 ---
 
 <BaseLayout
@@ -55,6 +56,20 @@ import FAQ from '../components/FAQ.astro';
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             FIMM, ETTI, Transporturi, Energetică, SIM
           </span>
+        </div>
+      </div>
+      
+      <!-- Animated Board (Desktop Only) -->
+      <div class="hero__board" id="animated-board">
+        <div class="board-item math" data-x="-150" data-y="-120" data-rot="-45">∫ e^x dx = e^x + C</div>
+        <div class="board-item math" data-x="180" data-y="-60" data-rot="30">lim(x→∞) (1+1/x)<sup>x</sup> = e</div>
+        <div class="board-item physics" data-x="-200" data-y="80" data-rot="-20">∑F = m·a</div>
+        <div class="board-item physics" data-x="120" data-y="180" data-rot="60">M<sub>A</sub> = F · d</div>
+        <div class="board-item gd" data-x="-80" data-y="20" data-rot="-65">
+          <svg viewBox="0 0 100 100" class="board-draw"><line x1="20" y1="80" x2="80" y2="80"/><circle cx="50" cy="40" r="25"/></svg>
+        </div>
+        <div class="board-item gd" data-x="60" data-y="-140" data-rot="75">
+          <svg viewBox="0 0 100 100" class="board-draw"><polygon points="50,20 80,80 20,80"/></svg>
         </div>
       </div>
     </div>
@@ -246,4 +261,50 @@ import FAQ from '../components/FAQ.astro';
     </div>
   </section>
 
+  <script>
+    // --- Animated Board Logic ---
+    const board = document.getElementById('animated-board');
+    const items = document.querySelectorAll('.board-item');
+    
+    if (board && items.length > 0) {
+      const updateBoard = () => {
+        // progress goes from 0 (top) to 1 (scrolled 500px down)
+        let scrollY = window.scrollY;
+        let progress = Math.min(scrollY / 500, 1);
+        
+        // ease-out curve for smooth landing
+        let ease = 1 - Math.pow(1 - progress, 3);
+        
+        items.forEach(item => {
+          let startX = parseFloat(item.getAttribute('data-x'));
+          let startY = parseFloat(item.getAttribute('data-y'));
+          let startRot = parseFloat(item.getAttribute('data-rot'));
+          
+          let currentX = startX * (1 - ease);
+          let currentY = startY * (1 - ease);
+          let currentRot = startRot * (1 - ease);
+          
+          item.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${currentRot}deg)`;
+          
+          // Glow effect increases as it gets organized
+          if (progress > 0.8) {
+            item.style.boxShadow = `0 0 ${15 * progress}px rgba(108, 92, 231, ${0.4 * progress})`;
+            item.style.borderColor = `rgba(108, 92, 231, ${progress})`;
+          } else {
+            item.style.boxShadow = 'var(--shadow-sm)';
+            item.style.borderColor = 'var(--border)';
+          }
+        });
+        
+        // Fade in board background slightly as order is established
+        board.style.backgroundColor = `rgba(108, 92, 231, ${0.05 * progress})`;
+        board.style.borderColor = `rgba(108, 92, 231, ${0.2 * progress})`;
+      };
+      
+      window.addEventListener('scroll', () => {
+        requestAnimationFrame(updateBoard);
+      });
+      updateBoard(); // initial state
+    }
+  </script>
 </BaseLayout>
