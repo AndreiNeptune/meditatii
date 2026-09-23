@@ -8,6 +8,7 @@ import IconRuler from '../components/icons/IconRuler.astro';
 import Calculator from '../components/Calculator.astro';
 import Testimonials from '../components/Testimonials.astro';
 import FAQ from '../components/FAQ.astro';
+import SlidingBlackboard from '../components/SlidingBlackboard.astro';
 const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
 ---
 <BaseLayout
@@ -19,7 +20,7 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
   <!-- ═══ HERO ═══ -->
   <section class="hero" id="hero">
     <div class="hero__grid"></div>
-    <div class="container">
+    <div class="container hero__split">
       <div class="hero__content">
         <p class="hero__pretitle">
           <svg width="20" height="20" viewBox="0 0 32 32" fill="none" style="flex-shrink: 0; margin-bottom: 2px;">
@@ -61,8 +62,38 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
           </span>
         </div>
       </div>
+      <div class="hero__visual">
+        <SlidingBlackboard />
+      </div>
     </div>
   </section>
+
+  <style>
+    .hero__split {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    .hero__visual {
+      display: none;
+    }
+    @media (min-width: 1024px) {
+      .hero__split {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .hero__content {
+        flex: 1;
+        max-width: 55%;
+      }
+      .hero__visual {
+        flex: 1;
+        display: block;
+        max-width: 45%;
+      }
+    }
+  </style>
 
   <!-- ═══ MATERII ═══ -->
   <section class="section" id="materii">

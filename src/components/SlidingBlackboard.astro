@@ -1,0 +1,155 @@
+---
+---
+
+<div class="blackboard-wrapper" id="blackboard-wrapper">
+  <!-- Fundalul principal - rama și tabla din spate -->
+  <img src="/tabla.webp" alt="Tabla universitara" class="blackboard-bg" />
+
+  <!-- Soluția curată (ascunsă inițial în spatele tablei din față) -->
+  <div class="board-back-content">
+    <h3 class="chalk-text clean-text">Soluție Ordonată:</h3>
+    <img src="/problema de mecanica 2 cinematica.webp" class="chalk-img clean-img" alt="Solutie" />
+  </div>
+
+  <!-- Tabla din față (care culisează) -->
+  <div class="board-front" id="board-front">
+    <div class="board-front-surface">
+      <img src="/problema de cinematica mecanica 2.webp" class="chalk-img messy-img-1" alt="Formule amestecate" />
+      <img src="/constructie piramida.webp" class="chalk-img messy-img-2" alt="Mai multe formule" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .blackboard-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    aspect-ratio: 1.1; /* Aproximativ proporția tablei din poză */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .blackboard-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  /* Textul și soluția care stau pe tabla din spate (partea de sus) */
+  .board-back-content {
+    position: absolute;
+    top: 8%;
+    left: 6%;
+    width: 88%;
+    height: 40%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .chalk-text {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: 0.5rem;
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.3);
+  }
+
+  /* Efectul de cretă pe imaginile negre pe fundal alb */
+  .chalk-img {
+    filter: grayscale(1) invert(1) brightness(1.8) contrast(1.5);
+    mix-blend-mode: screen;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .clean-img {
+    max-height: 80%;
+    object-fit: contain;
+  }
+
+  /* Tabla din față care se mișcă */
+  .board-front {
+    position: absolute;
+    top: 0;
+    left: 3.5%; /* potrivim cu marginile ramei din tabla.png */
+    width: 93%;
+    height: 52%; /* Acoperă jumătatea de sus */
+    z-index: 3;
+    will-change: transform;
+    transform: translateY(0);
+    /* Simulăm suprafața tablei verde închis */
+    background-color: #123e27;
+    /* Câteva zgârieturi / praf foarte subtil */
+    background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+    background-size: 20px 20px;
+    /* Marginea de metal de jos care glisează */
+    border-bottom: 10px solid #c0c6c9;
+    border-left: 2px solid #aeb2b5;
+    border-right: 2px solid #aeb2b5;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.6), 0 15px 25px rgba(0,0,0,0.5);
+  }
+
+  .board-front-surface {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .messy-img-1 {
+    position: absolute;
+    top: -5%;
+    left: 5%;
+    width: 70%;
+    transform: rotate(-3deg);
+  }
+
+  .messy-img-2 {
+    position: absolute;
+    bottom: -15%;
+    right: 0%;
+    width: 55%;
+    transform: rotate(5deg);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.getElementById('blackboard-wrapper');
+    const boardFront = document.getElementById('board-front');
+    if (!wrapper || !boardFront) return;
+
+    window.addEventListener('scroll', () => {
+      const rect = wrapper.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Dacă tabla este în vizorul ecranului
+      if (rect.top < windowHeight && rect.bottom > 0) {
+        // Calculăm cât la sută din element a fost scrollat
+        // Când rect.top este fix la mijlocul ecranului vrem progres 50%
+        // Să facem să alunece când elementul trece prin jumătatea superioară a ecranului
+        const progress = Math.max(0, Math.min(1, (windowHeight * 0.8 - rect.top) / windowHeight));
+        
+        // Translăm cu max 96% din înălțimea *ei* (a tablei glisante) ca să nu treacă peste marginea de jos a ramei
+        // Un ease-out matematic simplu: progress * progress
+        const slideAmount = (progress * progress) * 150; 
+        const clampedSlide = Math.min(slideAmount, 89); // %
+        
+        boardFront.style.transform = `translateY(${clampedSlide}%)`;
+      }
+    }, { passive: true });
+  });
+</script>
