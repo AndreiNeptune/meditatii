@@ -280,6 +280,7 @@ p {
   background: linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
               var(--gradient-card-border) border-box;
   border: 2px solid transparent;
+  animation: pulseGlowPopular 4s ease-in-out infinite;
 }
 
 .card--popular::before {
@@ -295,10 +296,12 @@ p {
   letter-spacing: 0.1em;
   padding: 4px 16px;
   border-radius: var(--radius-full);
+  animation: badgeShine 2.5s ease-in-out infinite;
 }
 
 .card--urgent {
   border-color: rgba(253, 126, 20, 0.3);
+  animation: pulseGlowUrgent 4s ease-in-out infinite 1s; /* Offset animation start */
 }
 
 .card--urgent:hover {
@@ -792,6 +795,8 @@ p {
 .package-card__emoji {
   font-size: 2rem;
   margin-bottom: var(--space-md);
+  display: inline-block;
+  animation: floatEmoji 3.5s ease-in-out infinite;
 }
 
 .package-card__name {
@@ -1303,6 +1308,26 @@ p {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes floatEmoji {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(5deg); }
+}
+
+@keyframes pulseGlowPopular {
+  0%, 100% { box-shadow: 0 0 10px rgba(108, 92, 231, 0.1); }
+  50% { box-shadow: 0 0 35px rgba(108, 92, 231, 0.35); }
+}
+
+@keyframes pulseGlowUrgent {
+  0%, 100% { box-shadow: 0 0 10px rgba(253, 126, 20, 0.1); }
+  50% { box-shadow: 0 0 35px rgba(253, 126, 20, 0.35); }
+}
+
+@keyframes badgeShine {
+  0%, 100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 rgba(108, 92, 231, 0); }
+  50% { transform: translateX(-50%) scale(1.05); box-shadow: 0 0 15px rgba(108, 92, 231, 0.5); }
 }
 
 @keyframes pulse {
