@@ -165,9 +165,10 @@
       boardMessy.style.transform = `translateY(${slideAmount}%)`;
       boardClean.style.transform = `translateY(-${slideAmount}%)`;
 
-      // Pe desktop, mutăm întreaga tablă puțin în jos (parallax) ca să nu iasă din ecran înainte de a vedea soluția de sus
+      // Pe desktop, mutăm întreaga tablă puțin în jos (parallax) ca să nu iasă din ecran înainte de a vedea soluția de sus.
+      // Oprim coborârea (parallaxul) odată ce animația de deschidere s-a terminat ca să nu se intersecteze cu textul de mai jos.
       if (window.innerWidth >= 1024) {
-        wrapper.style.transform = `translateY(${scrollY * 0.5}px)`;
+        wrapper.style.transform = `translateY(${progress * 200}px)`;
       } else {
         wrapper.style.transform = 'none';
       }
