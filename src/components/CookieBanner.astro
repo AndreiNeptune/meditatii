@@ -7,7 +7,9 @@
       Mai multe detalii găsești în <a href="/politica-de-confidentialitate">Politica de Confidențialitate</a>.
     </p>
     <div class="cookie-banner__actions">
-      <button id="accept-cookies" class="btn btn--primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Am înțeles</button>
+      <button id="preferences-cookies" class="btn btn--outline" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Preferințe</button>
+      <button id="deny-cookies" class="btn btn--outline" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Refuză</button>
+      <button id="accept-cookies" class="btn btn--primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Acceptă toate</button>
     </div>
   </div>
 </div>
@@ -42,6 +44,12 @@
     color: var(--accent-blue);
     text-decoration: underline;
   }
+  .cookie-banner__actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   
   @media (min-width: 768px) {
     .cookie-banner__content {
@@ -56,16 +64,35 @@
   document.addEventListener('DOMContentLoaded', () => {
     const banner = document.getElementById('cookie-banner');
     const acceptBtn = document.getElementById('accept-cookies');
+    const denyBtn = document.getElementById('deny-cookies');
+    const prefBtn = document.getElementById('preferences-cookies');
     
-    if (!banner || !acceptBtn) return;
+    if (!banner) return;
     
-    if (!localStorage.getItem('cookies-accepted')) {
+    if (!localStorage.getItem('cookies-accepted') && !localStorage.getItem('cookies-denied')) {
       banner.style.display = 'block';
     }
     
-    acceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookies-accepted', 'true');
-      banner.style.display = 'none';
-    });
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookies-accepted', 'true');
+        banner.style.display = 'none';
+        // Aici s-ar putea activa efectiv scripturile de tracking
+      });
+    }
+
+    if (denyBtn) {
+      denyBtn.addEventListener('click', () => {
+        localStorage.setItem('cookies-denied', 'true');
+        banner.style.display = 'none';
+        // Aici s-ar asigura oprirea/neactivarea tracking-ului
+      });
+    }
+
+    if (prefBtn) {
+      prefBtn.addEventListener('click', () => {
+        window.location.href = '/politica-de-confidentialitate'; // Fallback pt preferinte momentan
+      });
+    }
   });
 </script>
