@@ -72,28 +72,51 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
     .hero__split {
       display: flex;
       flex-direction: column;
-      gap: 3rem;
+      position: relative;
+      justify-content: center;
+      min-height: 80vh;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      /* Shadow pe text pentru lizibilitate maximă peste tablă pe mobil */
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 4px 20px rgba(0,0,0,0.9);
     }
     .hero__visual {
-      display: block;
-      width: 100%;
-      max-width: 500px;
-      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%; /* O facem un pic mai mare să acopere frumos fundalul */
+      max-width: 600px;
+      z-index: 0;
+      opacity: 0.4;
+      pointer-events: none; /* ca să poți da click pe butoanele din text prin ea */
     }
+    
     @media (min-width: 1024px) {
       .hero__split {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        gap: 3rem;
+        min-height: auto;
       }
       .hero__content {
         flex: 1;
         max-width: 55%;
+        text-shadow: none; /* Scoatem shadow-ul pe desktop unde stau alăturate */
       }
       .hero__visual {
         flex: 1;
-        display: block;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
         max-width: 45%;
+        opacity: 1;
+        pointer-events: auto;
       }
     }
   </style>
