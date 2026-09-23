@@ -72,7 +72,7 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
     .hero__split {
       display: flex;
       flex-direction: column;
-      position: relative;
+      /* Am scos position: relative ca să putem poziționa tabla absolut față de tot ecranul (secțiunea hero) */
       justify-content: center;
       min-height: 80vh;
     }
@@ -84,13 +84,15 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
     }
     .hero__visual {
       position: absolute;
-      top: -80px; /* Compensează padding-ul de sus al secțiunii hero pentru a ajunge fix sub meniu */
+      top: 0; /* Pornește chiar de sub meniu, din topul ecranului */
       left: 50%;
       transform: translateX(-50%);
-      width: 120%; /* O facem un pic mai mare să acopere frumos fundalul */
+      width: 150%; /* Lățită suficient cât să umple marginile */
       max-width: 600px;
       z-index: 0;
       opacity: 0.8;
+      /* O facem semnificativ mai întunecată (shadowed) ca să iasă textul în evidență */
+      filter: brightness(0.5) drop-shadow(0 0 20px rgba(0,0,0,1)); 
       pointer-events: none; /* ca să poți da click pe butoanele din text prin ea */
     }
     
@@ -116,6 +118,7 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
         width: 100%;
         max-width: 45%;
         opacity: 1;
+        filter: none; /* Revenim la luminozitatea normală pe ecran mare */
         pointer-events: auto;
       }
     }
