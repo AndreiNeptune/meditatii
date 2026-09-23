@@ -500,6 +500,7 @@ p {
   gap: 5px;
   padding: 4px;
   z-index: 1001;
+  position: relative;
 }
 
 .navbar__hamburger span {
@@ -528,8 +529,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 10, 15, 0.98);
-  backdrop-filter: blur(20px);
+  background: var(--bg-primary); /* Fundal complet opac pentru a evita bug-uri vizuale pe iOS Safari */
   z-index: 999;
   flex-direction: column;
   align-items: center;
