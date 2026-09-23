@@ -69,6 +69,14 @@ export const formSchema = z.object({
   acord_legal: z.literal('Da', {
     errorMap: () => ({ message: 'Trebuie să fii de acord cu Termenii și Condițiile pentru a continua.' })
   })
+}).refine(data => {
+  if (data.newsletter === 'Da') {
+    return data.email && data.email.trim().length > 0;
+  }
+  return true;
+}, {
+  message: 'Adresa de email este obligatorie pentru a te abona la newsletter.',
+  path: ['email']
 });
 
 export type FormData = z.infer<typeof formSchema>;

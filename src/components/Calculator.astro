@@ -578,11 +578,9 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
       const encodedMsg = encodeURIComponent(msg);
       const waUrl = `https://wa.me/${document.getElementById('calculator').dataset.waNumber}?text=${encodedMsg}`;
 
-      // Open WhatsApp in new tab and redirect to Thank You page
-      window.open(waUrl, '_blank');
-      window.location.href = '/multumim';
-      
-      // Reset after a delay (in case redirect is blocked)
+      // Redirect to Thank You page which will handle the WhatsApp redirect
+      // We do this because window.open after await fetch gets blocked by popup blockers
+      window.location.href = '/multumim?redirect=' + encodeURIComponent(waUrl);
       setTimeout(() => {
         btn.innerHTML = ogText;
         btn.disabled = false;
