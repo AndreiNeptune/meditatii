@@ -26,7 +26,24 @@ const navLinks = [
     </a>
 
     <div class="navbar__links">
-      {navLinks.map(link => (
+      <div class="navbar__dropdown">
+        <button class="navbar__link navbar__dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Materii
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="navbar__dropdown-menu">
+          {navLinks.filter(link => link.label !== 'Despre Noi').map(link => (
+            <a
+              href={link.href}
+              class={`navbar__dropdown-link ${currentPage === link.href ? 'navbar__dropdown-link--active' : ''}`}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+      
+      {navLinks.filter(link => link.label === 'Despre Noi').map(link => (
         <a
           href={link.href}
           class={`navbar__link ${currentPage === link.href ? 'navbar__link--active' : ''}`}
