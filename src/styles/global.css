@@ -1292,8 +1292,14 @@ p {
 /* ── CTA Final Section ── */
 .cta-section {
   text-align: center;
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
   background: linear-gradient(180deg, transparent, rgba(108, 92, 231, 0.05));
+}
+
+@media (min-width: 768px) {
+  .cta-section {
+    padding: var(--space-4xl) 0;
+  }
 }
 
 .cta-section__title {
