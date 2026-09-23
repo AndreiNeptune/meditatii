@@ -59,12 +59,19 @@
   .gd-hero-collage {
     width: 100%;
     right: 0;
-    opacity: 0.15; /* Subdued on mobile so text is legible */
-    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
+    opacity: 0.15;
+    /* Smooth fade at top and bottom */
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 40%, transparent 85%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 40%, transparent 85%);
   }
 
-  /* Add shadow under text to ensure readability on top of images */
+  /* Add a dark gradient behind the text container to ensure max readability */
+  .hero--subject .hero__content {
+    background: linear-gradient(to bottom, transparent 0%, rgba(10, 11, 16, 0.7) 40%, rgba(10, 11, 16, 0.95) 100%);
+    padding-bottom: 1rem;
+  }
+
+  /* Keep shadow under text as an extra layer of readability */
   .hero--subject .hero__content h1,
   .hero--subject .hero__content p,
   .hero--subject .hero__content strong {
