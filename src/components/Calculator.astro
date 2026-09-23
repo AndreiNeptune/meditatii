@@ -107,6 +107,13 @@
             </div>
           </div>
 
+          <div class="form-group checkbox-group" style="margin-bottom: -0.5rem;">
+            <label class="checkbox-label">
+              <input type="checkbox" id="f_acord_online" required>
+              <span id="label-acord-online">Am înțeles că meditațiile se desfășoară <strong>exclusiv online</strong> (nu fizic).</span>
+            </label>
+          </div>
+
           <div class="form-group checkbox-group">
             <label class="checkbox-label">
               <input type="checkbox" id="f_acord_pret" required>
@@ -418,10 +425,15 @@
       }
       const an = (document.getElementById('f_an') as HTMLSelectElement).value;
       const subiecte = (document.querySelector('input[name="f_subiecte"]:checked') as HTMLInputElement)?.value;
+      const acordOnline = (document.getElementById('f_acord_online') as HTMLInputElement).checked;
       const acord = (document.getElementById('f_acord_pret') as HTMLInputElement).checked;
 
       if (!fac || !an || !subiecte) {
         alert('Te rog să completezi toate câmpurile.');
+        return;
+      }
+      if (!acordOnline) {
+        alert('Trebuie să confirmi că ești de acord cu desfășurarea meditațiilor exclusiv online.');
         return;
       }
       if (!acord) {
@@ -533,6 +545,7 @@
       (document.getElementById('f_facultate_other') as HTMLInputElement).value = '';
       (document.getElementById('f_facultate_other') as HTMLInputElement).style.display = 'none';
       (document.getElementById('f_an') as HTMLSelectElement).value = '';
+      (document.getElementById('f_acord_online') as HTMLInputElement).checked = false;
       (document.getElementById('f_acord_pret') as HTMLInputElement).checked = false;
       const mentiuniEl = document.getElementById('f_mentiuni') as HTMLTextAreaElement;
       if (mentiuniEl) mentiuniEl.value = '';
