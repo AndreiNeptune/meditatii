@@ -19,6 +19,8 @@
       <img src="/desfasurata cilindru.webp" class="chalk-img messy-img-3" alt="Formule amestecate 3" />
       <img src="/plan definit de 2 drepte paralele.webp" class="chalk-img messy-img-4" alt="Formule amestecate 4" />
       <img src="/intersectie tip patrundere.webp" class="chalk-img messy-img-5" alt="Formule amestecate 5" />
+      <img src="/desfasurata con.webp" class="chalk-img messy-img-6" alt="Formule amestecate 6" />
+      <img src="/sectiune cilindru.webp" class="chalk-img messy-img-7" alt="Formule amestecate 7" />
     </div>
   </div>
 
@@ -86,20 +88,22 @@
     overflow: hidden;
   }
 
-  /* Efectul realist de cretă */
+  /* Efectul realist de cretă (optimizat pentru a îngroșa și lumina liniile subțiri) */
   .chalk-img {
-    filter: drop-shadow(0 0 1px rgba(255,255,255,0.1)) grayscale(1) invert(1) contrast(3) brightness(1.2) sepia(0.2) hue-rotate(180deg);
+    filter: drop-shadow(0 0 1px rgba(255,255,255,0.6)) drop-shadow(0 0 3px rgba(255,255,255,0.3)) grayscale(1) invert(1) contrast(1.8) brightness(1.5) sepia(0.2) hue-rotate(180deg);
     mix-blend-mode: plus-lighter;
-    opacity: 0.85;
+    opacity: 0.95;
     pointer-events: none;
   }
 
   /* Desenele murdare (mai mici, mai multe, împrăștiate) */
-  .messy-img-1 { position: absolute; top: 10%; left: 5%; width: 35%; transform: rotate(-8deg); }
-  .messy-img-2 { position: absolute; bottom: 5%; right: 10%; width: 30%; transform: rotate(12deg); }
-  .messy-img-3 { position: absolute; top: 15%; right: 5%; width: 35%; transform: rotate(-5deg); }
-  .messy-img-4 { position: absolute; bottom: 10%; left: 15%; width: 30%; transform: rotate(7deg); }
-  .messy-img-5 { position: absolute; top: 40%; left: 40%; width: 25%; transform: rotate(-15deg); }
+  .messy-img-1 { position: absolute; top: 10%; left: 5%; width: 22%; transform: rotate(-8deg); }
+  .messy-img-2 { position: absolute; bottom: 5%; right: 10%; width: 18%; transform: rotate(12deg); }
+  .messy-img-3 { position: absolute; top: 15%; right: 5%; width: 20%; transform: rotate(-5deg); }
+  .messy-img-4 { position: absolute; bottom: 10%; left: 15%; width: 18%; transform: rotate(7deg); }
+  .messy-img-5 { position: absolute; top: 30%; left: 35%; width: 15%; transform: rotate(-15deg); }
+  .messy-img-6 { position: absolute; bottom: 20%; left: 45%; width: 17%; transform: rotate(5deg); }
+  .messy-img-7 { position: absolute; top: -5%; left: 55%; width: 20%; transform: rotate(-10deg); }
 
   /* Desenele curate (frumos ordonate pe tabla de jos care va urca) */
   .clean-img-1 { position: absolute; top: 10%; left: 5%; height: 80%; width: 45%; object-fit: contain; }
