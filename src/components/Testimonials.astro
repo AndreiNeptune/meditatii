@@ -122,17 +122,22 @@
     });
 
     function autoScroll() {
-      if (!isHovered && track.children.length > originalCount) {
-        track.scrollLeft += scrollSpeed;
+      if (track.children.length > originalCount) {
+        if (!isHovered) {
+          track.scrollLeft += scrollSpeed;
+        }
         
         const firstOriginal = track.children[0] as HTMLElement;
         const firstClone = track.children[originalCount] as HTMLElement;
-        
-        // Exact distance between the start of the first item and the start of the cloned item
         const resetPoint = firstClone.offsetLeft - firstOriginal.offsetLeft;
         
+        // Infinit scroll către dreapta (inclusiv manual)
         if (track.scrollLeft >= resetPoint) {
           track.scrollLeft -= resetPoint;
+        }
+        // Infinit scroll către stânga (manual)
+        else if (track.scrollLeft <= 0) {
+          track.scrollLeft += resetPoint - 1;
         }
       }
       requestAnimationFrame(autoScroll);
