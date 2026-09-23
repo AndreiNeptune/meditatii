@@ -165,6 +165,13 @@
       boardMessy.style.transform = `translateY(${slideAmount}%)`;
       boardClean.style.transform = `translateY(-${slideAmount}%)`;
 
+      // Pe desktop, mutăm întreaga tablă puțin în jos (parallax) ca să nu iasă din ecran înainte de a vedea soluția de sus
+      if (window.innerWidth >= 1024) {
+        wrapper.style.transform = `translateY(${scrollY * 0.5}px)`;
+      } else {
+        wrapper.style.transform = 'none';
+      }
+
       // Când trece de jumătate (progress > 0.45), schimbăm pozele dezordonate în unele clare
       if (progress > 0.45) {
         boardMessy.classList.add('show-clean');
