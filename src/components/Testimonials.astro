@@ -94,13 +94,16 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.testimonials-track');
+    const track = document.querySelector('.testimonials-track') as HTMLElement;
     if (!track) return;
 
-    // Clone the cards for infinite scroll
+    const originalCount = track.children.length;
     const cards = Array.from(track.children);
+    
+    // Clone the cards for infinite scroll
     cards.forEach(card => {
-      const clone = card.cloneNode(true);
+      const clone = card.cloneNode(true) as HTMLElement;
+      clone.setAttribute('aria-hidden', 'true');
       track.appendChild(clone);
     });
 
@@ -119,19 +122,23 @@
     });
 
     function autoScroll() {
-      if (!isHovered) {
+      if (!isHovered && track.children.length > originalCount) {
         track.scrollLeft += scrollSpeed;
         
-        // When scrolled past the first set of items (scrollWidth / 2)
-        // Reset to 0 to create an infinite loop
-        if (track.scrollLeft >= track.scrollWidth / 2) {
-          track.scrollLeft = 0;
+        const firstOriginal = track.children[0] as HTMLElement;
+        const firstClone = track.children[originalCount] as HTMLElement;
+        
+        // Exact distance between the start of the first item and the start of the cloned item
+        const resetPoint = firstClone.offsetLeft - firstOriginal.offsetLeft;
+        
+        if (track.scrollLeft >= resetPoint) {
+          track.scrollLeft -= resetPoint;
         }
       }
       requestAnimationFrame(autoScroll);
     }
 
-    // Start auto-scroll after a short delay
+    // Start auto-scroll after a short delay to ensure layout is calculated
     setTimeout(() => {
       requestAnimationFrame(autoScroll);
     }, 500);
