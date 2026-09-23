@@ -30,6 +30,7 @@
 
       <!-- Step 2: Level -->
       <div class="calculator__step" data-step="2">
+        <button class="btn-back" data-back="1">← Înapoi</button>
         <h3 class="calculator__question">Care e nivelul tău actual?</h3>
         <div class="calculator__options">
           <button class="calculator__option" data-value="zero" data-next="3">😵 Sunt pe altă planetă (la zero complet)</button>
@@ -40,6 +41,7 @@
 
       <!-- Step 3: Time -->
       <div class="calculator__step" data-step="3">
+        <button class="btn-back" data-back="2">← Înapoi</button>
         <h3 class="calculator__question">Cât timp mai ai până la examen?</h3>
         <div class="calculator__options">
           <button class="calculator__option" data-value="urgent" data-next="result">🔥 Sub 72 de ore (E URGENT!)</button>
@@ -50,6 +52,7 @@
 
       <!-- Result (Intermediate) -->
       <div class="calculator__step" data-step="result">
+        <button class="btn-back" data-back="3" style="margin-bottom: 1rem;">← Înapoi</button>
         <div class="calculator__result">
           <div class="calculator__result-icon" id="calc-result-icon"></div>
           <h3 class="calculator__result-title" id="calc-result-title"></h3>
@@ -65,6 +68,7 @@
 
       <!-- Step 4: Qualification Form -->
       <div class="calculator__step" data-step="4">
+        <button class="btn-back" data-back="result">← Înapoi</button>
         <h3 class="calculator__question">Hai să ne cunoaștem situația</h3>
         
         <div class="funnel-form">
@@ -110,6 +114,11 @@
             </label>
           </div>
 
+          <div class="form-group" style="margin-top: 0.5rem;">
+            <label for="f_mentiuni">Mențiuni / Modificări pachet (opțional)</label>
+            <textarea id="f_mentiuni" class="form-input" placeholder="Dacă vrei mai multe ore sau să modifici ceva la pachet, scrie aici..." rows="2" style="resize: vertical;"></textarea>
+          </div>
+
           <button class="btn btn--primary" id="btn-to-step5" style="width: 100%; justify-content: center; margin-top: 1rem;">
             Ultimul pas →
           </button>
@@ -118,6 +127,7 @@
 
       <!-- Step 5: Contact -->
       <div class="calculator__step" data-step="5">
+        <button class="btn-back" data-back="4">← Înapoi</button>
         <h3 class="calculator__question">Unde te contactez?</h3>
         
         <div class="funnel-form">
@@ -149,6 +159,23 @@
 </section>
 
 <style>
+  .btn-back {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    margin-bottom: -0.5rem;
+    transition: color var(--transition-fast);
+  }
+  .btn-back:hover {
+    color: var(--text-primary);
+  }
+
   .funnel-form {
     display: flex;
     flex-direction: column;
@@ -273,6 +300,18 @@
           goToStep(currentStep, nextStep);
           if (nextStep === 'result') showResult();
         }, 200);
+      }
+    });
+
+    // Back Button Handler
+    wizard.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains('btn-back')) {
+        const backTo = target.dataset.back;
+        const currentStep = target.closest('.calculator__step') as HTMLElement;
+        if (backTo && currentStep) {
+          goToStep(currentStep, backTo);
+        }
       }
     });
 
@@ -405,6 +444,8 @@
       // Adăugăm honeypot-ul în payload
       const honeypot = (document.getElementById('b_website') as HTMLInputElement).value;
 
+      const mentiuni = (document.getElementById('f_mentiuni') as HTMLTextAreaElement)?.value || '';
+
       // Prepare payload
       const payload = {
         materie: state.step1,
@@ -417,6 +458,7 @@
         are_subiecte: state.subiecte,
         nume: state.nume,
         telefon: state.telefon,
+        mentiuni: mentiuni,
         sursa: window.location.href,
         b_website: honeypot
       };
@@ -433,7 +475,11 @@
       }
 
       // Generate WhatsApp message
-      const msg = `Salut! Sunt ${payload.nume}, anul ${payload.an} la ${payload.facultate}.\n\nAm făcut formularul pe site și aș vrea ${payload.pachet_recomandat} la ${payload.materie}.\nTarif acceptat: ${payload.pret}.\n\nCând am putea începe?`;
+      let msg = `Salut! Sunt ${payload.nume}, anul ${payload.an} la ${payload.facultate}.\n\nAm făcut formularul pe site și aș vrea ${payload.pachet_recomandat} la ${payload.materie}.\nTarif acceptat: ${payload.pret}.\n\n`;
+      if (mentiuni.trim()) {
+        msg += `Mențiuni suplimentare: ${mentiuni.trim()}\n\n`;
+      }
+      msg += `Când am putea începe?`;
       const encodedMsg = encodeURIComponent(msg);
       // Pui numarul tau real aici
       const waUrl = `https://wa.me/NUMAR_TAU?text=${encodedMsg}`;
@@ -466,6 +512,8 @@
       (document.getElementById('f_facultate_other') as HTMLInputElement).style.display = 'none';
       (document.getElementById('f_an') as HTMLSelectElement).value = '';
       (document.getElementById('f_acord_pret') as HTMLInputElement).checked = false;
+      const mentiuniEl = document.getElementById('f_mentiuni') as HTMLTextAreaElement;
+      if (mentiuniEl) mentiuniEl.value = '';
       const radios = document.querySelectorAll('input[name="f_subiecte"]') as NodeListOf<HTMLInputElement>;
       radios.forEach(r => r.checked = false);
     });
