@@ -2,13 +2,11 @@
 ---
 
 <div class="blackboard-wrapper" id="blackboard-wrapper">
-  <!-- Fundalul principal - rama și tabla din spate -->
-  <img src="/tabla.webp" alt="Tabla universitara" class="blackboard-bg" />
-
-  <!-- Soluția curată (ascunsă inițial în spatele tablei din față) -->
-  <div class="board-back-content">
-    <h3 class="chalk-text clean-text">Soluție Ordonată:</h3>
-    <img src="/problema de mecanica 2 cinematica.webp" class="chalk-img clean-img" alt="Solutie" />
+  <!-- Fundalul fix din spate (culoarea site-ului, tabla curata) -->
+  <div class="board-back">
+    <div class="board-back-content">
+      <img src="/problema de mecanica 2 cinematica.webp" class="chalk-img clean-img" alt="Solutie" />
+    </div>
   </div>
 
   <!-- Tabla din față (care culisează) -->
@@ -26,56 +24,58 @@
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    aspect-ratio: 1.1; /* Aproximativ proporția tablei din poză */
+    aspect-ratio: 1.2;
     overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    /* Cadru metalic 3D realist creat doar din CSS */
+    background-color: #0f172a; /* Culoarea de fundal a tablei */
+    border: 16px solid #b0b5b9;
+    border-top-color: #d1d5db;
+    border-bottom-color: #8a9196;
+    border-left-color: #a0a6ab;
+    border-right-color: #a0a6ab;
+    box-shadow: 
+      0 30px 60px rgba(0, 0, 0, 0.6),
+      inset 0 10px 20px rgba(0, 0, 0, 0.5),
+      inset 0 -5px 15px rgba(0,0,0,0.4);
   }
 
-  .blackboard-bg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  .board-back {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
+    /* Adăugăm o textură de praf de cretă extrem de subtilă */
+    background-image: 
+      radial-gradient(circle at 30% 40%, rgba(255,255,255,0.02) 0%, transparent 20%),
+      radial-gradient(circle at 70% 60%, rgba(255,255,255,0.015) 0%, transparent 25%);
   }
 
-  /* Textul și soluția care stau pe tabla din spate (partea de sus) */
   .board-back-content {
     position: absolute;
-    top: 8%;
-    left: 6%;
-    width: 88%;
-    height: 40%;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 45%;
     z-index: 2;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding: 1rem;
   }
 
-  .chalk-text {
-    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    margin-bottom: 0.5rem;
-    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.3);
-  }
-
-  /* Efectul de cretă pe imaginile negre pe fundal alb */
+  /* Efectul de cretă ultra-realist pe poze alb-negru */
   .chalk-img {
-    filter: grayscale(1) invert(1) brightness(1.8) contrast(1.5);
-    mix-blend-mode: screen;
-    opacity: 0.9;
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.3)) grayscale(1) invert(1) contrast(3) brightness(1.2) sepia(0.2) hue-rotate(180deg);
+    mix-blend-mode: plus-lighter;
+    opacity: 0.85;
     pointer-events: none;
   }
 
   .clean-img {
-    max-height: 80%;
+    max-height: 90%;
+    max-width: 90%;
     object-fit: contain;
   }
 
@@ -83,23 +83,24 @@
   .board-front {
     position: absolute;
     top: 0;
-    left: 3.5%; /* potrivim cu marginile ramei din tabla.png */
-    width: 93%;
+    left: 0;
+    width: 100%;
     height: 52%; /* Acoperă jumătatea de sus */
     z-index: 3;
     will-change: transform;
     transform: translateY(0);
-    /* Simulăm suprafața tablei verde închis */
-    background-color: #123e27;
-    /* Câteva zgârieturi / praf foarte subtil */
-    background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
-    background-size: 20px 20px;
+    
+    /* Fundalul tablei glisante (aceeași nuanță cu tabla de jos) */
+    background-color: #121c33;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(255,255,255,0.015) 0%, transparent 30%),
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.02) 0%, transparent 20%);
+    
     /* Marginea de metal de jos care glisează */
-    border-bottom: 10px solid #c0c6c9;
-    border-left: 2px solid #aeb2b5;
-    border-right: 2px solid #aeb2b5;
-    box-shadow: inset 0 0 50px rgba(0,0,0,0.6), 0 15px 25px rgba(0,0,0,0.5);
+    border-bottom: 12px solid #aeb4b8;
+    box-shadow: 
+      inset 0 0 40px rgba(0,0,0,0.6), 
+      0 12px 20px rgba(0,0,0,0.5); /* Umbra pe care o aruncă peste tabla de jos */
   }
 
   .board-front-surface {
@@ -111,18 +112,18 @@
 
   .messy-img-1 {
     position: absolute;
-    top: -5%;
+    top: 0;
     left: 5%;
-    width: 70%;
+    width: 65%;
     transform: rotate(-3deg);
   }
 
   .messy-img-2 {
     position: absolute;
     bottom: -15%;
-    right: 0%;
-    width: 55%;
-    transform: rotate(5deg);
+    right: 2%;
+    width: 50%;
+    transform: rotate(6deg);
   }
 </style>
 
@@ -136,17 +137,12 @@
       const rect = wrapper.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
-      // Dacă tabla este în vizorul ecranului
       if (rect.top < windowHeight && rect.bottom > 0) {
-        // Calculăm cât la sută din element a fost scrollat
-        // Când rect.top este fix la mijlocul ecranului vrem progres 50%
-        // Să facem să alunece când elementul trece prin jumătatea superioară a ecranului
         const progress = Math.max(0, Math.min(1, (windowHeight * 0.8 - rect.top) / windowHeight));
-        
-        // Translăm cu max 96% din înălțimea *ei* (a tablei glisante) ca să nu treacă peste marginea de jos a ramei
-        // Un ease-out matematic simplu: progress * progress
         const slideAmount = (progress * progress) * 150; 
-        const clampedSlide = Math.min(slideAmount, 89); // %
+        
+        // Culisăm până aproape de marginea de jos
+        const clampedSlide = Math.min(slideAmount, 92); 
         
         boardFront.style.transform = `translateY(${clampedSlide}%)`;
       }
