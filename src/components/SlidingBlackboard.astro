@@ -115,21 +115,19 @@
     if (!wrapper || !boardClean || !boardMessy) return;
 
     window.addEventListener('scroll', () => {
-      const rect = wrapper.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY;
       
-      if (rect.top < windowHeight && rect.bottom > 0) {
-        const progress = Math.max(0, Math.min(1, (windowHeight * 0.8 - rect.top) / windowHeight));
-        
-        // Culisăm pe un interval [0, 100]
-        // Tabla murdară coboară (100%)
-        // Tabla curată urcă (-100%)
-        const slideAmount = (progress * progress) * 150; 
-        const clampedSlide = Math.min(slideAmount, 100); 
-        
-        boardMessy.style.transform = `translateY(${clampedSlide}%)`;
-        boardClean.style.transform = `translateY(-${clampedSlide}%)`;
-      }
+      // Culisăm pe baza scroll-ului efectiv. 
+      // La scrollY = 0, progresul e 0% (închise complet).
+      // Se vor deschide complet după ~400px de scroll.
+      const maxScroll = 400; 
+      const progress = Math.max(0, Math.min(1, scrollY / maxScroll));
+      
+      // Ease out
+      const slideAmount = progress * 100; 
+      
+      boardMessy.style.transform = `translateY(${slideAmount}%)`;
+      boardClean.style.transform = `translateY(-${slideAmount}%)`;
     }, { passive: true });
   });
 </script>
