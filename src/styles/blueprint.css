@@ -1,0 +1,104 @@
+/* GD Blueprint Effects */
+.blueprint-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  /* The magic filters to turn white-bg drawings into neon glowing blueprints */
+  filter: invert(1) sepia(1) hue-rotate(220deg) saturate(4) brightness(1.2) contrast(1.5);
+  mix-blend-mode: screen;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.blueprint-image:hover {
+  filter: invert(1) sepia(1) hue-rotate(220deg) saturate(6) brightness(1.4) contrast(1.8) drop-shadow(0 0 15px rgba(108, 92, 231, 0.4));
+  transform: scale(1.03);
+}
+
+/* Hero Collage for GD */
+.gd-hero-collage {
+  position: absolute;
+  right: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  /* Fade edges so it blends with background */
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 70%);
+}
+
+.gd-hero-collage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  filter: invert(1) sepia(1) hue-rotate(220deg) saturate(3) brightness(1) contrast(1.2);
+  mix-blend-mode: screen;
+}
+
+.gd-hero-collage img:nth-child(1) {
+  transform: translateY(10%) rotate(-4deg) scale(1.1);
+}
+.gd-hero-collage img:nth-child(2) {
+  transform: translateY(-5%) rotate(3deg) scale(1.2);
+}
+.gd-hero-collage img:nth-child(3) {
+  grid-column: span 2;
+  height: 250px;
+  transform: translateY(-15%) rotate(-1deg);
+}
+
+@media (max-width: 992px) {
+  .gd-hero-collage {
+    display: none;
+  }
+}
+
+/* Gallery layout */
+.gd-gallery {
+  column-count: 2;
+  column-gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+@media (max-width: 768px) {
+  .gd-gallery {
+    column-count: 1;
+    column-gap: 0;
+  }
+}
+
+.gd-gallery__item {
+  break-inside: avoid;
+  margin-bottom: var(--space-xl);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.gd-gallery__item:hover {
+  border-color: var(--accent-light);
+  background: var(--bg-card);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.1);
+}
+
+.gd-gallery__title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xs);
+}

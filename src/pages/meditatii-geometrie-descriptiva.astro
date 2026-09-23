@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import IconCompass from '../components/icons/IconCompass.astro';
 import FAQ from '../components/FAQ.astro';
+import '../styles/blueprint.css';
 ---
 
 <BaseLayout
@@ -12,10 +13,18 @@ import FAQ from '../components/FAQ.astro';
 >
 
   <!-- HERO -->
-  <section class="hero hero--subject">
+  <section class="hero hero--subject" style="position: relative; overflow: hidden;">
     <div class="hero__grid"></div>
-    <div class="container">
-      <div class="hero__content">
+    
+    <!-- Blueprint Hero Collage -->
+    <div class="gd-hero-collage">
+      <img src="/intersectie%20tip%20patrundere.PNG" alt="Intersecție pătrundere" loading="lazy" />
+      <img src="/desfasurata%20con.PNG" alt="Desfășurată con" loading="lazy" />
+      <img src="/sectiune%20cilindru.PNG" alt="Secțiune cilindru" loading="lazy" />
+    </div>
+
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="hero__content" style="max-width: 600px;">
         <IconCompass class="hero__icon" size={64} />
         <p class="hero__pretitle">Geometrie Descriptivă (GD)</p>
         <h1 class="hero__title">Învață să <span>"vezi" în spațiu</span></h1>
@@ -106,6 +115,55 @@ import FAQ from '../components/FAQ.astro';
             <div class="topic__item">Determinarea curbei spațiale rezultate din pătrunderea a două corpuri.</div>
             <div class="topic__item">Ex: Intersecția dintre doi cilindri cu generatoare de front și de capăt.</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" style="background: var(--bg-primary);">
+    <div class="container">
+      <div class="reveal" style="text-align: center; margin-bottom: var(--space-2xl);">
+        <p class="section__pretitle">Portofoliu GD</p>
+        <h2 class="section__title">Exemple de lucrări rezolvate împreună</h2>
+        <p class="section__subtitle" style="margin: 0 auto;">Nu vindem planșe gata făcute, dar la finalul ședințelor vei fi capabil să desenezi la perfecție următoarele tipuri de probleme.</p>
+      </div>
+
+      <div class="gd-gallery reveal">
+        <div class="gd-gallery__item">
+          <img src="/constructie%20piramida.PNG" alt="Construcție Piramidă" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Construcție Piramidă</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Reprezentarea în dublă proiecție și găsirea adevăratei mărimi.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/desfasurata%20cilindru.PNG" alt="Desfășurată Cilindru" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Desfășurată Cilindru</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Secționare și desfășurare riguroasă.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/desfasurata%20con.PNG" alt="Desfășurată Con" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Desfășurată Con</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Determinarea unghiului la centru și trasarea elementelor pe mantaua desfășurată.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/intersectie%20tip%20patrundere.PNG" alt="Intersecție tip pătrundere" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Intersecție tip Pătrundere</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Curba de intersecție dintre două suprafețe, pas cu pas.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/plan%20definit%20de%202%20drepte%20paralele.PNG" alt="Plan definit de 2 drepte paralele" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Plan din 2 drepte paralele</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Găsirea urmelor planului (h, v).</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/sectiune%20cilindru.PNG" alt="Secțiune Cilindru" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Secțiune Cilindru</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Determinarea elipsei de secțiune pe orizontală și verticală.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/sectiune%20con.PNG" alt="Secțiune Con" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Secțiune Con</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Generatoare, conice (elipse/hiperbole/parabole) în secțiune plană.</p>
         </div>
       </div>
     </div>
