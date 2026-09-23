@@ -40,6 +40,7 @@
 
   /* Gradients */
   --gradient-accent: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  --gradient-text: linear-gradient(135deg, #a29bfe, #e0e7ff);
   --gradient-warm: linear-gradient(135deg, #fd7e14, #ffad60);
   --gradient-hero: radial-gradient(ellipse at 50% 0%, rgba(108, 92, 231, 0.15) 0%, transparent 60%);
   --gradient-card-border: linear-gradient(135deg, rgba(108, 92, 231, 0.4), rgba(162, 155, 254, 0.1), rgba(108, 92, 231, 0.4));
@@ -600,7 +601,7 @@ p {
 }
 
 .hero__title span {
-  background: var(--gradient-accent);
+  background: var(--gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
