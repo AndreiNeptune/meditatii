@@ -8,6 +8,7 @@ import IconRuler from '../components/icons/IconRuler.astro';
 import Calculator from '../components/Calculator.astro';
 import Testimonials from '../components/Testimonials.astro';
 import FAQ from '../components/FAQ.astro';
+import HeroSnake from '../components/HeroSnake.astro';
 const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
 ---
 <BaseLayout
@@ -19,6 +20,7 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
   <!-- ═══ HERO ═══ -->
   <section class="hero" id="hero">
     <div class="hero__grid"></div>
+    <HeroSnake />
     <div class="container">
       <div class="hero__content">
         <p class="hero__pretitle">

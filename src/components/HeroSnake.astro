@@ -1,0 +1,150 @@
+---
+---
+
+<div id="hero-snake-container" class="hero-snake-container">
+  <canvas id="hero-snake-canvas"></canvas>
+</div>
+
+<style>
+  .hero-snake-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* Below content (z-index: 2), above background */
+    pointer-events: none; /* Let clicks pass through */
+    transition: transform 0.1s linear; /* Smooth hardware acceleration */
+    will-change: transform;
+  }
+  
+  #hero-snake-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('hero-snake-canvas') as HTMLCanvasElement;
+    const container = document.getElementById('hero-snake-container') as HTMLDivElement;
+    if (!canvas || !container) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    // We'll give it some extra height so it can roam freely
+    const setSize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    };
+    setSize();
+    window.addEventListener('resize', setSize);
+
+    // Scroll effect - makes the snake dive away or fly out
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      // Move it down and right really fast as we scroll
+      // Using transform for performance
+      container.style.transform = `translate3d(${scrollY * 1.5}px, ${scrollY * 2}px, 0)`;
+      container.style.opacity = `${Math.max(0, 1 - scrollY / 400)}`;
+    }, { passive: true });
+
+    // Snake properties
+    const numSegments = 40;
+    const segmentLength = 12;
+    const snake = [];
+    for (let i = 0; i < numSegments; i++) {
+      snake.push({ x: width / 2, y: height / 2 });
+    }
+
+    let target = { x: width / 2, y: height / 2 };
+    let time = 0;
+
+    // Update target wandering using Lissajous curves and noise-like movement
+    const updateTarget = () => {
+      time += 0.01;
+      
+      // Complex wandering path
+      const wanderX = Math.sin(time * 0.5) * Math.cos(time * 0.3) * (width * 0.4);
+      const wanderY = Math.sin(time * 0.4) * Math.sin(time * 0.7) * (height * 0.4);
+      
+      // Center point shifts slowly
+      const cx = width / 2 + Math.sin(time * 0.1) * 100;
+      const cy = height / 2 + Math.cos(time * 0.15) * 100;
+
+      target.x = cx + wanderX;
+      target.y = cy + wanderY;
+    };
+
+    // Inverse Kinematics for smooth following
+    const reach = (i, targetX, targetY) => {
+      const dx = targetX - snake[i].x;
+      const dy = targetY - snake[i].y;
+      const angle = Math.atan2(dy, dx);
+      snake[i].x = targetX - Math.cos(angle) * segmentLength;
+      snake[i].y = targetY - Math.sin(angle) * segmentLength;
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      // Glow effect
+      ctx.shadowColor = 'rgba(108, 92, 231, 0.8)';
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      // Segment by segment drawing for tapering effect
+      for (let i = 0; i < numSegments - 1; i++) {
+        ctx.beginPath();
+        ctx.moveTo(snake[i].x, snake[i].y);
+        ctx.lineTo(snake[i+1].x, snake[i+1].y);
+        
+        ctx.lineWidth = Math.max(1, 15 * (1 - i / numSegments));
+        // Calculate color per segment
+        const alpha = 1 - (i / numSegments);
+        ctx.strokeStyle = `rgba(108, 92, 231, ${alpha})`;
+        
+        // Remove shadow for body to improve performance, keep it for head
+        if (i < 5) {
+          ctx.shadowBlur = 25 - (i * 4);
+        } else {
+          ctx.shadowBlur = 0;
+        }
+        
+        ctx.stroke();
+      }
+      
+      // Draw "head" glow
+      ctx.beginPath();
+      ctx.arc(snake[0].x, snake[0].y, 6, 0, Math.PI * 2);
+      ctx.fillStyle = '#fff';
+      ctx.fill();
+    };
+
+    const animate = () => {
+      updateTarget();
+
+      // Head follows target smoothly
+      snake[0].x += (target.x - snake[0].x) * 0.05;
+      snake[0].y += (target.y - snake[0].y) * 0.05;
+
+      // Rest of body follows
+      for (let i = 1; i < numSegments; i++) {
+        reach(i, snake[i - 1].x, snake[i - 1].y);
+      }
+
+      draw();
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+  });
+</script>
