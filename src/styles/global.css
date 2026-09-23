@@ -160,7 +160,7 @@ p {
 
 /* ── Section ── */
 .section {
-  padding: var(--space-2xl) 0;
+  padding: var(--space-xl) 0;
   position: relative;
 }
 
@@ -1171,12 +1171,19 @@ p {
   display: flex;
   align-items: flex-start;
   gap: var(--space-2xl);
-  padding: var(--space-2xl) 0;
+  padding: var(--space-xl) 0;
   border-bottom: 1px solid var(--border);
+}
+
+@media (min-width: 768px) {
+  .topic {
+    padding: var(--space-2xl) 0;
+  }
 }
 
 .topic:last-child {
   border-bottom: none;
+  padding-bottom: 0;
 }
 
 .topic__icon-wrap {
