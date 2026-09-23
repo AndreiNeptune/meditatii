@@ -103,6 +103,14 @@
     pointer-events: none;
   }
 
+  /* Pe mobil facem creta mai poroasă, ușor încețoșată, exact cum ai cerut */
+  @media (max-width: 1023px) {
+    .chalk-img {
+      filter: blur(0.5px) drop-shadow(0 0 1px rgba(255,255,255,0.4)) drop-shadow(0 0 2px rgba(255,255,255,0.2)) grayscale(1) invert(1) contrast(1.6) brightness(1.6) sepia(0.2) hue-rotate(180deg);
+      opacity: 0.85;
+    }
+  }
+
   .messy-img, .clean-new-img {
     transition: opacity 0.3s ease;
   }
