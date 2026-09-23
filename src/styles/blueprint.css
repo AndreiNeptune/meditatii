@@ -55,8 +55,42 @@
   transform: translateY(-15%) rotate(-1deg);
 }
 
+/* Hero Collage for Mecanica */
+.mecanica-hero-collage {
+  position: absolute;
+  right: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 70%);
+}
+
+.mecanica-hero-collage img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  filter: invert(1) sepia(1) hue-rotate(220deg) saturate(3) brightness(1) contrast(1.2);
+  mix-blend-mode: screen;
+}
+
+.mecanica-hero-collage img:nth-child(1) {
+  transform: translateY(10%) rotate(-3deg) scale(1.05);
+}
+.mecanica-hero-collage img:nth-child(2) {
+  transform: translateY(-10%) rotate(2deg) scale(1.1);
+}
+
 @media (max-width: 992px) {
-  .gd-hero-collage {
+  .gd-hero-collage, .mecanica-hero-collage {
     width: 100%;
     right: 0;
     opacity: 0.15;

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import IconGear from '../components/icons/IconGear.astro';
 import FAQ from '../components/FAQ.astro';
+import '../styles/blueprint.css';
 ---
 
 <BaseLayout
@@ -11,12 +12,21 @@ import FAQ from '../components/FAQ.astro';
   whatsappMaterie="Mecanică 2 (Dinamică)"
 >
 
-  <section class="hero hero--subject">
+  <section class="hero hero--subject" style="position: relative; overflow: hidden;">
     <div class="hero__grid"></div>
-    <div class="container">
-      <div class="hero__content">
-        <IconGear class="hero__icon" size={64} />
-        <p class="hero__pretitle">Mecanică 2 — Dinamică</p>
+
+    <!-- Blueprint Hero Collage -->
+    <div class="mecanica-hero-collage">
+      <img src="/problema%20de%20cinematica%20mecanica%202.PNG" alt="Problemă cinematică mecanica 2" loading="lazy" />
+      <img src="/problema%20de%20mecanica%202%20cinematica.PNG" alt="Problemă mecanica 2 cinematică" loading="lazy" />
+    </div>
+
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="hero__content" style="max-width: 600px;">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: var(--space-lg);">
+          <IconGear class="hero__icon" size={56} style="margin-bottom: 0;" />
+          <p class="hero__pretitle" style="margin-bottom: 0; font-size: 1.4rem;">Mecanică 2 — Dinamică</p>
+        </div>
         <h1 class="hero__title">Scapă de stresul <span>ecuațiilor diferențiale</span></h1>
         <p class="hero__subtitle">
           Dinamica este unul dintre cele mai grele examene. Ca să treci, trebuie să știi să rezolvi problemele, nu doar să copiezi formule. <strong>Focusul nostru va fi 100% pe exerciții.</strong> Te ajutăm să aplici corect teoremele generale și ecuațiile lui Lagrange fără să te pierzi în derivate.
@@ -60,6 +70,30 @@ import FAQ from '../components/FAQ.astro';
             <div class="topic__item"><strong>Ecuațiile lui Lagrange de speța a II-a:</strong> Te învățăm algoritmul prin care scrii energia cinetică, forțele generalizate și derivezi corect.</div>
             <div class="topic__item">Un singur exercițiu Lagrange rezolvat curat îți asigură de cele mai multe ori trecerea!</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" style="background: var(--bg-primary);">
+    <div class="container">
+      <div class="reveal" style="text-align: center; margin-bottom: var(--space-2xl);">
+        <p class="section__pretitle">Portofoliu Mecanică 2</p>
+        <h2 class="section__title">Exemple de lucrări rezolvate împreună</h2>
+        <p class="section__subtitle" style="margin: 0 auto;">Vei învăța să rezolvi cap-coadă probleme complexe de cinematică și dinamică, la nivel de examen.</p>
+      </div>
+
+      <div class="gd-gallery reveal">
+        <div class="gd-gallery__item">
+          <img src="/problema%20de%20cinematica%20mecanica%202.PNG" alt="Problemă cinematică mecanica 2" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Problemă de Cinematică</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Rezolvare pas cu pas a unui mecanism complex.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/problema%20de%20mecanica%202%20cinematica.PNG" alt="Problemă mecanica 2 cinematică" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Analiză Cinematică</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Calculul vitezelor și accelerațiilor pentru fiecare element.</p>
         </div>
       </div>
     </div>
