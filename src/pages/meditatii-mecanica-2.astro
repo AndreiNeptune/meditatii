@@ -47,16 +47,17 @@ import '../styles/blueprint.css';
       <div class="reveal">
         <p class="section__pretitle">Ce facem la Dinamică</p>
         <h2 class="section__title">Rezolvăm fix tipurile de probleme de la examen</h2>
+        <p class="section__subtitle" style="max-width: 700px;">Mecanică 2 aprofundează capitolele de Cinematică și Dinamică — punctul material, solidul rigid și sistemele de corpuri. Iată ce acoperim:</p>
       </div>
 
       <div class="topic reveal">
         <div class="topic__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         <div class="topic__content">
-          <h3 class="topic__title">1. Teoremele Generale ale Dinamicii</h3>
+          <h3 class="topic__title">1. Dinamica pe plan înclinat și balistică (Teorema energiei cinetice)</h3>
           <div class="topic__list">
-            <div class="topic__item">Exerciții cu Teorema impulsului și Teorema momentului cinetic.</div>
-            <div class="topic__item">Probleme avansate cu Teorema energiei cinetice (calcul lucru mecanic).</div>
-            <div class="topic__item">Dinamica punctului material și a sistemelor de puncte materiale.</div>
+            <div class="topic__item">Mișcarea unui punct material pe un <strong>plan înclinat cu frecare</strong> (unghi α, coef. μ) — aplicăm teorema variației energiei cinetice: E<sub>B</sub> − E<sub>A</sub> = L(mg) + L(N) + L(F<sub>f</sub>).</div>
+            <div class="topic__item"><strong>Zborul liber / Aruncarea oblică și orizontală:</strong> Din ecuația diferențială mẍ = mg, prin integrare succesivă deducem vitezele (ẋ, ẏ) și coordonatele x(t), y(t).</div>
+            <div class="topic__item">Impunem condițiile inițiale și deducem <strong>ecuația traiectoriei y(x)</strong> pentru a găsi punctul de impact, bătaia sau înălțimea h.</div>
           </div>
         </div>
       </div>
@@ -64,11 +65,49 @@ import '../styles/blueprint.css';
       <div class="topic reveal">
         <div class="topic__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
         <div class="topic__content">
-          <h3 class="topic__title">2. Mecanică Analitică (Cel mai important subiect!)</h3>
+          <h3 class="topic__title">2. Cinematica mecanismelor cu legături</h3>
+          <div class="topic__list">
+            <div class="topic__item">Studiul vitezelor și accelerațiilor punctelor unui mecanism — <strong>mișcarea plan-paralelă</strong>.</div>
+            <div class="topic__item">Calculul <strong>vitezelor liniare</strong> (v<sub>A</sub>, v<sub>B</sub>) și al <strong>vitezelor unghiulare</strong> (ω) prin metode vectoriale.</div>
+            <div class="topic__item">Determinarea <strong>accelerațiilor</strong> (a<sub>A</sub>) prin reprezentare grafică vectorială și calcul scalar.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic reveal">
+        <div class="topic__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="12" y1="6" x2="12" y2="18"/></svg></div>
+        <div class="topic__content">
+          <h3 class="topic__title">3. Sisteme mecanice complexe (Scripeți, tamburi, mase suspendate)</h3>
+          <div class="topic__list">
+            <div class="topic__item"><strong>Configurația tipică:</strong> Scripete/roată fixă cu rotație pură (R), roată/tambur mobil în mișcare plan-paralelă (PP), corp cu masă P în translație pură (T).</div>
+            <div class="topic__item"><strong>Tabelul cinematic:</strong> Exprimarea deplasărilor, vitezelor și accelerațiilor tuturor corpurilor în funcție de un singur parametru (θ, ω).</div>
+            <div class="topic__item"><strong>Energia cinetică a sistemului:</strong> E = ½·A·ω² (unde A = inerția / masa redusă).</div>
+            <div class="topic__item"><strong>Lucrul mecanic + Accelerația unghiulară:</strong> Derivăm E − E₀ = L → ½·A·2ω·ε = B·ω → ε = B/A.</div>
+            <div class="topic__item"><strong>Izolarea corpurilor:</strong> Aplicăm Teorema Impulsului și Teorema Momentului Cinetic pe fiecare corp separat → reacțiunile din lagăre (H, V) și tensiunile din fire (S₁, S₂, S₃).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic reveal">
+        <div class="topic__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 12h16"/><path d="M12 4v16"/></svg></div>
+        <div class="topic__content">
+          <h3 class="topic__title">4. Mecanică Analitică — Ecuațiile lui Lagrange (Cel mai important subiect!)</h3>
           <div class="topic__list">
             <div class="topic__item"><strong>Calculul gradelor de libertate</strong> pentru sisteme complexe și alegerea coordonatelor generalizate.</div>
             <div class="topic__item"><strong>Ecuațiile lui Lagrange de speța a II-a:</strong> Te învățăm algoritmul prin care scrii energia cinetică, forțele generalizate și derivezi corect.</div>
-            <div class="topic__item">Un singur exercițiu Lagrange rezolvat curat îți asigură de cele mai multe ori trecerea!</div>
+            <div class="topic__item">Un singur exercițiu Lagrange rezolvat curat îți asigură de cele mai multe ori <strong>trecerea examenului</strong>!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic reveal">
+        <div class="topic__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="12" r="3"/><line x1="10" y1="12" x2="14" y2="12"/></svg></div>
+        <div class="topic__content">
+          <h3 class="topic__title">5. Ciocnirea (Impactul)</h3>
+          <div class="topic__list">
+            <div class="topic__item"><strong>Ciocnirea directă și oblică:</strong> Calculul vitezelor după impact folosind coeficientul de restituție (e).</div>
+            <div class="topic__item"><strong>Ciocnirea plastică vs. elastică:</strong> Înțelegerea diferențelor fizice și aplicarea corectă a legilor de conservare.</div>
+            <div class="topic__item">Probleme cu ciocnirea <strong>punctului material de un perete</strong> sau între două corpuri cu mase diferite.</div>
           </div>
         </div>
       </div>
