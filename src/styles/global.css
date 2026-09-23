@@ -1232,6 +1232,12 @@ p {
   margin-top: 8px;
 }
 
+.topic__item strong {
+  min-width: 75px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
 /* ── Footer ── */
 .footer {
   background: var(--bg-secondary);
