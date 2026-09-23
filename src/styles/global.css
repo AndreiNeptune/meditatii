@@ -888,11 +888,24 @@ p {
 }
 
 .testimonial-card {
-  min-width: 340px;
+  min-width: min(85vw, 340px);
   max-width: 400px;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   padding: var(--space-xl);
   flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .testimonials-track {
+    margin-left: calc(var(--space-lg) * -1);
+    margin-right: calc(var(--space-lg) * -1);
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+
+  .testimonial-card {
+    padding: var(--space-lg);
+  }
 }
 
 .testimonial-card__stars {
