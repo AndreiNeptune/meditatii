@@ -4,14 +4,14 @@
   height: auto;
   border-radius: var(--radius-md);
   /* The magic filters to turn white-bg drawings into neon glowing blueprints */
-  filter: grayscale(1) contrast(5) invert(1) sepia(1) hue-rotate(220deg) saturate(4) brightness(1.2) contrast(1.5);
+  filter: invert(1) sepia(1) hue-rotate(220deg) saturate(4) brightness(1.2) contrast(1.5);
   mix-blend-mode: screen;
   transition: all 0.4s ease;
   cursor: pointer;
 }
 
 .blueprint-image:hover {
-  filter: grayscale(1) contrast(5) invert(1) sepia(1) hue-rotate(220deg) saturate(6) brightness(1.4) contrast(1.8) drop-shadow(0 0 15px rgba(108, 92, 231, 0.4));
+  filter: invert(1) sepia(1) hue-rotate(220deg) saturate(6) brightness(1.4) contrast(1.8) drop-shadow(0 0 15px rgba(108, 92, 231, 0.4));
   transform: scale(1.03);
 }
 
@@ -39,10 +39,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: var(--radius-lg);
-  /* 1. grayscale și contrast mare curăță fundalul murdar (off-white devine alb pur)
-     2. invert(1) transformă albul pur în negru pur
-     3. sepia + hue-rotate adaugă nuanța de blueprint pe liniile albe, iar negrul pur rămâne negru. */
-  filter: grayscale(1) contrast(5) invert(1) sepia(1) hue-rotate(220deg) saturate(3) brightness(0.9);
+  filter: invert(1) sepia(1) hue-rotate(220deg) saturate(3) brightness(1) contrast(1.2);
   mix-blend-mode: screen;
 }
 
@@ -81,7 +78,7 @@
   height: 250px;
   object-fit: cover;
   border-radius: var(--radius-lg);
-  filter: grayscale(1) contrast(5) invert(1) sepia(1) hue-rotate(220deg) saturate(3) brightness(0.9);
+  filter: invert(1) sepia(1) hue-rotate(220deg) saturate(3) brightness(1) contrast(1.2);
   mix-blend-mode: screen;
 }
 
