@@ -18,7 +18,7 @@
   position: absolute;
   right: 2%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateZ(0);
   width: 48%;
   height: 100%;
   display: grid;
@@ -27,16 +27,8 @@
   opacity: 0.5;
   z-index: 0;
   pointer-events: none;
-  /* Use pseudo-element for fading instead of mask-image to avoid iOS Safari filter bug */
-}
-
-.gd-hero-collage::after {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background: radial-gradient(ellipse at center, transparent 20%, var(--bg-primary) 70%);
-  pointer-events: none;
-  z-index: 1;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
 }
 
 .gd-hero-collage img {
@@ -45,18 +37,19 @@
   object-fit: cover;
   border-radius: var(--radius-lg);
   filter: sepia(1) hue-rotate(220deg) saturate(3) brightness(1) contrast(1.2);
+  transform: translateZ(0); /* Fix for Safari mask+filter bug */
 }
 
 .gd-hero-collage img:nth-child(1) {
-  transform: translateY(10%) rotate(-4deg) scale(1.1);
+  transform: translateY(10%) rotate(-4deg) scale(1.1) translateZ(0);
 }
 .gd-hero-collage img:nth-child(2) {
-  transform: translateY(-5%) rotate(3deg) scale(1.2);
+  transform: translateY(-5%) rotate(3deg) scale(1.2) translateZ(0);
 }
 .gd-hero-collage img:nth-child(3) {
   grid-column: span 2;
   height: 250px;
-  transform: translateY(-15%) rotate(-1deg);
+  transform: translateY(-15%) rotate(-1deg) translateZ(0);
 }
 
 /* Hero Collage for Mecanica */
@@ -64,7 +57,7 @@
   position: absolute;
   right: 2%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateZ(0);
   width: 48%;
   height: 100%;
   display: grid;
@@ -73,15 +66,8 @@
   opacity: 0.5;
   z-index: 0;
   pointer-events: none;
-}
-
-.mecanica-hero-collage::after {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background: radial-gradient(ellipse at center, transparent 20%, var(--bg-primary) 70%);
-  pointer-events: none;
-  z-index: 1;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
 }
 
 .mecanica-hero-collage img {
@@ -90,6 +76,7 @@
   object-fit: cover;
   border-radius: var(--radius-lg);
   filter: sepia(1) hue-rotate(220deg) saturate(3) brightness(1) contrast(1.2);
+  transform: translateZ(0); /* Fix for Safari */
 }
 
 .mecanica-hero-collage img:nth-child(1) {
@@ -115,8 +102,9 @@
   .mecanica-hero-collage img:nth-child(2) { transform: translateY(-10%) rotate(2deg) scale(2.4); }
   .mecanica-hero-collage img:nth-child(3) { transform: translateY(-15%) rotate(-1deg) scale(2.5); }
   
-  .gd-hero-collage::after, .mecanica-hero-collage::after {
-    background: linear-gradient(to bottom, transparent 0%, var(--bg-primary) 15%, var(--bg-primary) 40%, transparent 85%);
+  .gd-hero-collage, .mecanica-hero-collage {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 40%, transparent 85%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 40%, transparent 85%);
   }
 
   /* Add a dark gradient behind the text container to ensure max readability */
