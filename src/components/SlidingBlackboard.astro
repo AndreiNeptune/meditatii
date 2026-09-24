@@ -6,26 +6,26 @@
   <!-- Tabla curată (inițial jos) care va urca -->
   <div class="board-clean" id="board-clean">
     <div class="board-surface">
-      <div class="chalk-wrapper clean-img-1"><img src="/problema de mecanica 2 cinematica.webp" class="chalk-img" alt="Solutie 1" /></div>
-      <div class="chalk-wrapper clean-img-2"><img src="/sectiune con.webp" class="chalk-img" alt="Solutie 2" /></div>
+      <div class="chalk-wrapper clean-img-1"><div class="chalk-blend"><img src="/problema de mecanica 2 cinematica.webp" class="chalk-img" alt="Solutie 1" /></div></div>
+      <div class="chalk-wrapper clean-img-2"><div class="chalk-blend"><img src="/sectiune con.webp" class="chalk-img" alt="Solutie 2" /></div></div>
     </div>
   </div>
 
   <!-- Tabla dezordonată (inițial sus) care va coborî și se va clarifica -->
   <div class="board-messy" id="board-messy">
     <div class="board-surface">
-      <div class="chalk-wrapper messy-img messy-img-1"><img src="/problema de cinematica mecanica 2.webp" class="chalk-img" alt="Formule amestecate 1" /></div>
-      <div class="chalk-wrapper messy-img messy-img-2"><img src="/constructie piramida.webp" class="chalk-img" alt="Formule amestecate 2" /></div>
-      <div class="chalk-wrapper messy-img messy-img-3"><img src="/desfasurata cilindru.webp" class="chalk-img" alt="Formule amestecate 3" /></div>
-      <div class="chalk-wrapper messy-img messy-img-4"><img src="/plan definit de 2 drepte paralele.webp" class="chalk-img" alt="Formule amestecate 4" /></div>
-      <div class="chalk-wrapper messy-img messy-img-5"><img src="/intersectie tip patrundere.webp" class="chalk-img" alt="Formule amestecate 5" /></div>
-      <div class="chalk-wrapper messy-img messy-img-6"><img src="/desfasurata con.webp" class="chalk-img" alt="Formule amestecate 6" /></div>
-      <div class="chalk-wrapper messy-img messy-img-7"><img src="/sectiune cilindru.webp" class="chalk-img" alt="Formule amestecate 7" /></div>
+      <div class="chalk-wrapper messy-img messy-img-1"><div class="chalk-blend"><img src="/problema de cinematica mecanica 2.webp" class="chalk-img" alt="Formule amestecate 1" /></div></div>
+      <div class="chalk-wrapper messy-img messy-img-2"><div class="chalk-blend"><img src="/constructie piramida.webp" class="chalk-img" alt="Formule amestecate 2" /></div></div>
+      <div class="chalk-wrapper messy-img messy-img-3"><div class="chalk-blend"><img src="/desfasurata cilindru.webp" class="chalk-img" alt="Formule amestecate 3" /></div></div>
+      <div class="chalk-wrapper messy-img messy-img-4"><div class="chalk-blend"><img src="/plan definit de 2 drepte paralele.webp" class="chalk-img" alt="Formule amestecate 4" /></div></div>
+      <div class="chalk-wrapper messy-img messy-img-5"><div class="chalk-blend"><img src="/intersectie tip patrundere.webp" class="chalk-img" alt="Formule amestecate 5" /></div></div>
+      <div class="chalk-wrapper messy-img messy-img-6"><div class="chalk-blend"><img src="/desfasurata con.webp" class="chalk-img" alt="Formule amestecate 6" /></div></div>
+      <div class="chalk-wrapper messy-img messy-img-7"><div class="chalk-blend"><img src="/sectiune cilindru.webp" class="chalk-img" alt="Formule amestecate 7" /></div></div>
     </div>
     <div class="board-surface" style="position: absolute; top: 0; left: 0;">
       <!-- Noile poze clare și ordonate care apar după jumătate din animație -->
-      <div class="chalk-wrapper clean-new-img clean-img-1"><img src="/desfasurata con.webp" class="chalk-img" alt="Solutie noua 1" /></div>
-      <div class="chalk-wrapper clean-new-img clean-img-2"><img src="/plan definit de 2 drepte paralele.webp" class="chalk-img" alt="Solutie noua 2" /></div>
+      <div class="chalk-wrapper clean-new-img clean-img-1"><div class="chalk-blend"><img src="/desfasurata con.webp" class="chalk-img" alt="Solutie noua 1" /></div></div>
+      <div class="chalk-wrapper clean-new-img clean-img-2"><div class="chalk-blend"><img src="/plan definit de 2 drepte paralele.webp" class="chalk-img" alt="Solutie noua 2" /></div></div>
     </div>
   </div>
 
@@ -98,12 +98,17 @@
 
   /* Efectul realist de cretă (optimizat pentru a îngroșa și lumina liniile subțiri) */
   .chalk-wrapper {
-    mix-blend-mode: screen; /* Must be on wrapper to prevent iOS Safari mask bug */
     opacity: 1;
     pointer-events: none;
     will-change: transform, opacity;
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+  }
+
+  .chalk-blend {
+    mix-blend-mode: screen;
+    width: 100%;
+    height: 100%;
   }
 
   .chalk-img {
