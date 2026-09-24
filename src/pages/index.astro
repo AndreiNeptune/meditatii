@@ -90,9 +90,15 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
       max-width: 100%;
       z-index: 0;
       opacity: 0.3; /* Ajustat pentru a compensa lipsa brightness(0.6) */
-      mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
-      -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
       pointer-events: none; 
+    }
+    .hero__visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, var(--bg-primary) 95%);
+      pointer-events: none;
+      z-index: 10;
     }
     
     @media (min-width: 1024px) {
@@ -117,9 +123,10 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
         max-width: 45%;
         opacity: 1;
         filter: none; /* Revenim la luminozitatea normală pe ecran mare */
-        mask-image: none;
-        -webkit-mask-image: none;
         pointer-events: auto;
+      }
+      .hero__visual::after {
+        display: none;
       }
     }
   </style>
