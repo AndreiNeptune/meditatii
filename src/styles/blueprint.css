@@ -80,15 +80,15 @@
 }
 
 .mecanica-hero-collage img:nth-child(1) {
-  transform: translateY(10%) rotate(-3deg) scale(1.8);
+  transform: translateY(10%) rotate(-3deg) scale(1.1) translateZ(0);
 }
 .mecanica-hero-collage img:nth-child(2) {
-  transform: translateY(-10%) rotate(2deg) scale(1.9);
+  transform: translateY(-10%) rotate(2deg) scale(1.2) translateZ(0);
 }
 .mecanica-hero-collage img:nth-child(3) {
   grid-column: span 2;
   height: 250px;
-  transform: translateY(-15%) rotate(-1deg) scale(2.0);
+  transform: translateY(-15%) rotate(-1deg) translateZ(0);
 }
 
 @media (max-width: 992px) {
@@ -97,10 +97,6 @@
     right: 0;
     opacity: 0.10; /* Mai negre / faint */
   }
-  
-  .mecanica-hero-collage img:nth-child(1) { transform: translateY(10%) rotate(-3deg) scale(2.2); }
-  .mecanica-hero-collage img:nth-child(2) { transform: translateY(-10%) rotate(2deg) scale(2.4); }
-  .mecanica-hero-collage img:nth-child(3) { transform: translateY(-15%) rotate(-1deg) scale(2.5); }
   
   .gd-hero-collage, .mecanica-hero-collage {
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 40%, transparent 85%);
