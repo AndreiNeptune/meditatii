@@ -14,17 +14,14 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
   <section class="hero hero--subject" style="position: relative; overflow: hidden;">
     <div class="hero__grid"></div>
 
-    <!-- Blueprint Hero Collage -->
-    <div class="mecanica-hero-collage">
-      <img src="/t/statica sistemelor.webp" alt="Statică sisteme" loading="lazy" />
-      <img src="/t/Torsorul de reducere al unui sistem de forțe.webp" alt="Torsorul de reducere" loading="lazy" />
-      <img src="/t/echilibrul solidului rigid.webp" alt="Echilibrul solidului rigid" loading="lazy" />
-    </div>
-
-    <div class="container" style="position: relative; z-index: 2;">
-      <div class="hero__content" style="max-width: 600px;">
-        <IconBeam class="hero__icon" size={64} />
-        <p class="hero__pretitle">Mecanică 1 — Statică</p>
+    <div class="container mecanica-hero-layout" style="position: relative; z-index: 2;">
+      
+      <!-- Text Content (Left) -->
+      <div class="hero__content" style="max-width: 600px; flex-shrink: 0;">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: var(--space-lg);">
+          <IconBeam class="hero__icon" size={56} style="margin-bottom: 0;" />
+          <p class="hero__pretitle" style="margin-bottom: 0; font-size: 1.4rem;">Mecanică 1 — Statică</p>
+        </div>
         <h1 class="hero__title">Treci examenul <span>rezolvând exerciții</span></h1>
         <p class="hero__subtitle">
           La curs e plin de desene uriașe și demonstrații, dar la examen ai de calculat forțe și reacțiuni. <strong>Ne axăm strict pe a face exercițiile.</strong> Te ajutăm să rezolvi cap-coadă orice problemă de Statică cu metode clare și pași algoritmici.
@@ -37,6 +34,14 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
         </div>
         <p class="hero__micro">120 lei/oră • 150 lei/oră urgențe</p>
       </div>
+
+      <!-- Blueprint Hero Collage (Right) -->
+      <div class="mecanica-hero-collage mecanica-hero-collage-flex">
+        <img src="/t/statica sistemelor.webp" alt="Statică sisteme" loading="lazy" />
+        <img src="/t/Torsorul de reducere al unui sistem de forțe.webp" alt="Torsorul de reducere" loading="lazy" />
+        <img src="/t/echilibrul solidului rigid.webp" alt="Echilibrul solidului rigid" loading="lazy" />
+      </div>
+
     </div>
   </section>
 

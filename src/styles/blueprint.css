@@ -170,3 +170,34 @@
   margin-top: var(--space-md);
   margin-bottom: var(--space-xs);
 }
+
+.mecanica-hero-collage-flex {
+  position: relative !important;
+  width: 48% !important;
+  right: auto !important;
+  top: auto !important;
+  transform: none !important;
+  height: auto !important;
+}
+@media (max-width: 992px) {
+  .mecanica-hero-collage-flex {
+    width: 100% !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 0 !important;
+    transform: translateY(-50%) !important;
+    z-index: 0 !important;
+  }
+}
+.mecanica-hero-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+@media (max-width: 992px) {
+  .mecanica-hero-layout {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
