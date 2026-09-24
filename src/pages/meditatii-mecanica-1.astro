@@ -11,10 +11,18 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
   whatsappMaterie="Mecanică 1 (Statică și Cinematică)"
 >
 
-  <section class="hero hero--subject">
+  <section class="hero hero--subject" style="position: relative; overflow: hidden;">
     <div class="hero__grid"></div>
-    <div class="container">
-      <div class="hero__content">
+
+    <!-- Blueprint Hero Collage -->
+    <div class="gd-hero-collage">
+      <img src="/statica%20sistemelor.webp" alt="Statică sisteme" loading="lazy" />
+      <img src="/Torsorul%20de%20reducere%20al%20unui%20sistem%20de%20forțe.webp" alt="Torsorul de reducere" loading="lazy" />
+      <img src="/echilibrul%20solidului%20rigid.webp" alt="Echilibrul solidului rigid" loading="lazy" />
+    </div>
+
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="hero__content" style="max-width: 600px;">
         <IconBeam class="hero__icon" size={64} />
         <p class="hero__pretitle">Mecanică 1 — Statică & Cinematică</p>
         <h1 class="hero__title">Treci examenul <span>rezolvând exerciții</span></h1>
@@ -106,6 +114,65 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
   </section>
 
   <div class="reveal"><FAQ /></div>
+
+  <!-- GALLERY -->
+  <section class="section" style="background: var(--bg-primary);">
+    <div class="container">
+      <div class="reveal" style="text-align: center; margin-bottom: var(--space-2xl);">
+        <p class="section__pretitle">Portofoliu Mecanică 1</p>
+        <h2 class="section__title">Exemple de probleme rezolvate împreună</h2>
+        <p class="section__subtitle" style="margin: 0 auto;">Până la finalul meditațiilor vei ști să rezolvi singur aceste tipuri de probleme, scriind corect toate ecuațiile de echilibru.</p>
+      </div>
+
+      <div class="gd-gallery reveal">
+        <div class="gd-gallery__item">
+          <img src="/metoda%20izolarii%20corpurilor.webp" alt="Metoda izolării corpurilor" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Metoda izolării corpurilor</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Izolarea corectă a subsistemelor și înlocuirea legăturilor.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/echilibrul%20solidului%20rigid%20cu%20forte%20compuse.webp" alt="Echilibrul cu forțe compuse" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Echilibrul solidului rigid</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Sisteme de forțe compuse, sarcini distribuite și momente.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/Centre%20de%20greutate%20pentru%20sisteme%20de%20bare%20.webp" alt="Centre de greutate pentru sisteme de bare" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Sisteme de bare</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Calculul centrului de greutate pentru structuri liniare compuse.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/Centre%20de%20masă%20pentru%20plăci%20compuse.webp" alt="Centre de masă plăci compuse" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Plăci compuse</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Împărțirea în suprafețe simple și calculul tabelar al coordonatelor (x, y).</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/Centre%20de%20masă%20pentru%20plăci%20plane%20decupate.webp" alt="Plăci plane decupate" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Plăci plane cu goluri</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Metoda ariilor negative pentru decupări circulare sau dreptunghiulare.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/Centrul%20de%20greutate%20al%20liniilor%20(curbelor)%20plane%20omogene.webp" alt="Centrul de greutate al curbelor" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Centrul de greutate pentru curbe</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Integrare și formule standard pentru arce de cerc sau linii omogene.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/Centrul%20de%20greutate%20al%20suprafețelor%20plane%20omogene.webp" alt="Centrul de greutate al suprafețelor" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Suprafețe plane omogene</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Determinarea coordonatelor centrului de masă pentru plăci standard.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/Reducerea%20forțelor%20concurente%20și%20oarecare%20în%203D.webp" alt="Reducerea forțelor în 3D" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Reducerea forțelor concurente</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Calculul rezultantei și adunarea vectorială a forțelor 3D oarecare.</p>
+        </div>
+        <div class="gd-gallery__item">
+          <img src="/Sisteme%203D%20de%20forțe.webp" alt="Sisteme 3D de forțe" class="blueprint-image" loading="lazy" />
+          <h3 class="gd-gallery__title">Sisteme 3D complexe</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Proiecții pe axe și descompunerea vectorială a forțelor în spațiu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="cta-section reveal">
     <div class="container">
