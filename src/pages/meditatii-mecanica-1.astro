@@ -42,12 +42,12 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
       <div class="topic reveal">
         <div class="topic__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V8M5 12H2a10 10 0 0 0 20 0h-3"/><circle cx="12" cy="8" r="2"/></svg></div>
         <div class="topic__content">
-          <h3 class="topic__title">1. Statica (Echilibrul forțelor)</h3>
+          <h3 class="topic__title">1. Statică (Echilibrul corpurilor și sistemelor)</h3>
           <div class="topic__list">
-            <div class="topic__item">Reducerea sistemelor de forțe și calculul reacțiunilor în reazeme.</div>
-            <div class="topic__item"><strong>Grinzi cu zăbrele:</strong> Facem zeci de exerciții cu metoda izolării nodurilor și metoda Ritter.</div>
-            <div class="topic__item">Centre de greutate / masă pentru plăci și corpuri 3D.</div>
-            <div class="topic__item">Probleme practice cu frecarea de alunecare și rostogolire.</div>
+            <div class="topic__item"><strong>Echilibrul pe plan sau obstacole:</strong> Roată/cilindru care urcă sau depășește un prag <i>h</i> sub forța <i>F</i> (stabilirea forței minime la desprindere, <i>N<sub>A</sub> → 0</i>). Determinarea forțelor normale și a unghiurilor de frecare (<i>F<sub>f</sub> ≤ μN<sub>B</sub></i>).</div>
+            <div class="topic__item"><strong>Sisteme de bare articulate și cabluri:</strong> Structuri în reazeme fixe/mobile sau încastrate, solicitate de forțe concentrate (<i>P, F</i>), momente (<i>M</i>) și sarcini distribuite. Scrierea ecuațiilor de echilibru (<i>∑F<sub>ix</sub> = 0, ∑F<sub>iy</sub> = 0, ∑M<sub>iO</sub> = 0</i>) și calculul reacțiunilor (orizontale, verticale și momente de încastrare).</div>
+            <div class="topic__item"><strong>Reducerea sistemelor de forțe:</strong> Calculul rezultantei <i>R</i> și al momentului rezultant <i>M<sub>O</sub></i> în spațiu 3D. Invariantul sistemului și ecuațiile axei centrale.</div>
+            <div class="topic__item"><strong>Centre de masă / greutate:</strong> Calcul pentru suprafețe compuse prin tabele cu segmente, arii și coordonate (<i>x<sub>i</sub>, y<sub>i</sub></i>).</div>
           </div>
         </div>
       </div>
@@ -55,11 +55,38 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
       <div class="topic reveal">
         <div class="topic__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M14 8l-4 8M10 8l4 8"/></svg></div>
         <div class="topic__content">
-          <h3 class="topic__title">2. Cinematica (Studiul mișcării)</h3>
+          <h3 class="topic__title">2. Cinematică (Studiul mișcării)</h3>
           <div class="topic__list">
             <div class="topic__item">Cinematica punctului material (viteză și accelerație).</div>
             <div class="topic__item">Cinematica rigidului: translație, rotație, mișcare plan-paralelă.</div>
             <div class="topic__item">Centrele instantanee de rotație și accelerația Coriolis.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic reveal">
+        <div class="topic__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m4 0h10"/></svg></div>
+        <div class="topic__content">
+          <h3 class="topic__title">3. Modul de învățare la meditații</h3>
+          <div class="topic__list">
+            <div class="topic__item"><strong>Abordare algoritmică:</strong> Lucrăm pur analitic, bazat pe o succesiune logică de pași pentru fiecare tip de problemă.</div>
+            <div class="topic__item"><strong>Diagrama de Corp Liber (DCL):</strong> Primul pas obligatoriu este „izolarea” corpului. Înlocuim legăturile (cabluri, reazeme) cu reacțiunile lor (<i>S, N, H, V</i>).</div>
+            <div class="topic__item"><strong>Alegerea axelor convenabile:</strong> Pe plane înclinate folosim axe rotite (descompunem greutatea cu sin <i>α</i> și cos <i>α</i>).</div>
+            <div class="topic__item"><strong>Ecuații scalare:</strong> La statică scriem direct ecuațiile de echilibru. La dinamică folosim tabelul cinematic, apoi ecuația de energie și izolările pentru eforturi interne.</div>
+            <div class="topic__item"><strong>Calcul simbolic riguros:</strong> Rezolvarea sistemelor liniare de ecuații și verificarea numărului de ecuații independente.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic reveal">
+        <div class="topic__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="topic__content">
+          <h3 class="topic__title">4. Ce ai nevoie să știi (Cunoștințe preliminare)</h3>
+          <div class="topic__list">
+            <div class="topic__item"><strong>Trigonometrie și geometrie plană:</strong> Descompunerea vectorilor pe axe ortogonale (sin <i>α</i>, cos <i>α</i>, tg <i>α</i>) și brațul forței pentru calculul momentelor (<i>∑M = 0</i>).</div>
+            <div class="topic__item"><strong>Calcul vectorial:</strong> Produsul vectorial (<i>r × F</i>) pentru momente în spațiul 3D și produsul scalar.</div>
+            <div class="topic__item"><strong>Analiză matematică elementară:</strong> Derivate de ordin I și II în raport cu timpul (<i>ẋ, ẍ</i> sau <i>ω = θ̇, ε = θ̈</i>) și integrale nedefinite simple (mișcare balistică).</div>
+            <div class="topic__item"><strong>Noțiuni fizice:</strong> Diferența dintre forțele exterioare și cele interioare (tensiuni), momente de inerție axiale (ex: <i>J = 1/2 mR<sup>2</sup></i>) și legile frecării uscate Coulomb.</div>
           </div>
         </div>
       </div>
