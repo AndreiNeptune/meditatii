@@ -102,18 +102,23 @@
     opacity: 0.10; /* Mai negre / faint */
   }
 
-  .mecanica-hero-collage img:nth-child(1) { transform: translateY(10%) rotate(-3deg) scale(2.2) translateZ(0); }
-  .mecanica-hero-collage img:nth-child(2) { transform: translateY(-10%) rotate(2deg) scale(2.4) translateZ(0); }
-  .mecanica-hero-collage img:nth-child(3) { transform: translateY(-15%) rotate(-1deg) scale(2.5) translateZ(0); }
+  .mecanica-hero-collage img {
+    height: 350px;
+  }
+  .gd-hero-collage img {
+    height: 350px;
+  }
+  .mecanica-hero-collage img:nth-child(1) { transform: translateY(0%) rotate(-3deg) scale(1.4) translateZ(0); }
+  .mecanica-hero-collage img:nth-child(2) { transform: translateY(0%) rotate(2deg) scale(1.4) translateZ(0); }
+  .mecanica-hero-collage img:nth-child(3) { transform: translateY(0%) rotate(-1deg) scale(1.5) translateZ(0); height: 300px; }
   
   .gd-hero-collage, .mecanica-hero-collage {
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 40%, transparent 85%);
     mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 40%, transparent 85%);
   }
 
-  /* Add a dark gradient behind the text container to ensure max readability */
+  /* Ensure text is readable with text-shadow instead of blocking the drawings */
   .hero--subject .hero__content {
-    background: linear-gradient(to bottom, transparent 0%, rgba(10, 11, 16, 0.7) 40%, rgba(10, 11, 16, 0.95) 100%);
     padding-bottom: 1rem;
   }
 
