@@ -5,10 +5,10 @@ import FAQ from '../components/FAQ.astro';
 const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
 ---
 <BaseLayout
-  title="Meditații Mecanică 1 Politehnică | Statică și Cinematică"
-  description="Scapă de restanța la Mecanică 1! Facem exercițiile împreună: Grinzi cu zăbrele, centre de masă, mișcarea punctului și a rigidului. 120 lei/oră."
+  title="Meditații Mecanică 1 Politehnică | Statică"
+  description="Scapă de restanța la Mecanică 1! Facem exercițiile împreună: Grinzi cu zăbrele, centre de masă, echilibrul solidului rigid. 120 lei/oră."
   currentPage="/meditatii-mecanica-1"
-  whatsappMaterie="Mecanică 1 (Statică și Cinematică)"
+  whatsappMaterie="Mecanică 1 (Statică)"
 >
 
   <section class="hero hero--subject" style="position: relative; overflow: hidden;">
@@ -24,10 +24,10 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
     <div class="container" style="position: relative; z-index: 2;">
       <div class="hero__content" style="max-width: 600px;">
         <IconBeam class="hero__icon" size={64} />
-        <p class="hero__pretitle">Mecanică 1 — Statică & Cinematică</p>
+        <p class="hero__pretitle">Mecanică 1 — Statică</p>
         <h1 class="hero__title">Treci examenul <span>rezolvând exerciții</span></h1>
         <p class="hero__subtitle">
-          La curs e plin de desene uriașe și demonstrații, dar la examen ai de calculat forțe și viteze. <strong>Ne axăm strict pe a face exercițiile.</strong> Te ajutăm să rezolvi cap-coadă orice problemă de Statică sau Cinematică cu metode clare și pași algoritmici.
+          La curs e plin de desene uriașe și demonstrații, dar la examen ai de calculat forțe și reacțiuni. <strong>Ne axăm strict pe a face exercițiile.</strong> Te ajutăm să rezolvi cap-coadă orice problemă de Statică cu metode clare și pași algoritmici.
         </p>
         <div class="hero__actions">
           <a href={`https://wa.me/${waNumber}?text=Salut! Am nevoie de ajutor la Mecanică 1. Când aveți disponibilitate?`} target="_blank" rel="noopener" class="btn btn--whatsapp">
@@ -60,27 +60,16 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
         </div>
       </div>
 
-      <div class="topic reveal">
-        <div class="topic__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M14 8l-4 8M10 8l4 8"/></svg></div>
-        <div class="topic__content">
-          <h3 class="topic__title">2. Cinematică (Studiul mișcării)</h3>
-          <div class="topic__list">
-            <div class="topic__item">Cinematica punctului material (viteză și accelerație).</div>
-            <div class="topic__item">Cinematica rigidului: translație, rotație, mișcare plan-paralelă.</div>
-            <div class="topic__item">Centrele instantanee de rotație și accelerația Coriolis.</div>
-          </div>
-        </div>
-      </div>
 
       <div class="topic reveal">
         <div class="topic__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m4 0h10"/></svg></div>
         <div class="topic__content">
-          <h3 class="topic__title">3. Modul de învățare la meditații</h3>
+          <h3 class="topic__title">2. Modul de învățare la meditații</h3>
           <div class="topic__list">
             <div class="topic__item"><strong>Abordare algoritmică:</strong> Lucrăm pur analitic, bazat pe o succesiune logică de pași pentru fiecare tip de problemă.</div>
             <div class="topic__item"><strong>Diagrama de Corp Liber (DCL):</strong> Primul pas obligatoriu este „izolarea” corpului. Înlocuim legăturile (cabluri, reazeme) cu reacțiunile lor (<i>S, N, H, V</i>).</div>
             <div class="topic__item"><strong>Alegerea axelor convenabile:</strong> Pe plane înclinate folosim axe rotite (descompunem greutatea cu sin <i>α</i> și cos <i>α</i>).</div>
-            <div class="topic__item"><strong>Ecuații scalare:</strong> La statică scriem direct ecuațiile de echilibru. La dinamică folosim tabelul cinematic, apoi ecuația de energie și izolările pentru eforturi interne.</div>
+            <div class="topic__item"><strong>Ecuații scalare:</strong> La statică scriem direct ecuațiile de echilibru și ne asigurăm că semnele pentru momente sunt corecte.</div>
             <div class="topic__item"><strong>Calcul simbolic riguros:</strong> Rezolvarea sistemelor liniare de ecuații și verificarea numărului de ecuații independente.</div>
           </div>
         </div>
@@ -89,12 +78,11 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
       <div class="topic reveal">
         <div class="topic__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
         <div class="topic__content">
-          <h3 class="topic__title">4. Ce ai nevoie să știi (Cunoștințe preliminare)</h3>
+          <h3 class="topic__title">3. Ce ai nevoie să știi (Cunoștințe preliminare)</h3>
           <div class="topic__list">
             <div class="topic__item"><strong>Trigonometrie și geometrie plană:</strong> Descompunerea vectorilor pe axe ortogonale (sin <i>α</i>, cos <i>α</i>, tg <i>α</i>) și brațul forței pentru calculul momentelor (<i>∑M = 0</i>).</div>
             <div class="topic__item"><strong>Calcul vectorial:</strong> Produsul vectorial (<i>r × F</i>) pentru momente în spațiul 3D și produsul scalar.</div>
-            <div class="topic__item"><strong>Analiză matematică elementară:</strong> Derivate de ordin I și II în raport cu timpul (<i>ẋ, ẍ</i> sau <i>ω = θ̇, ε = θ̈</i>) și integrale nedefinite simple (mișcare balistică).</div>
-            <div class="topic__item"><strong>Noțiuni fizice:</strong> Diferența dintre forțele exterioare și cele interioare (tensiuni), momente de inerție axiale (ex: <i>J = 1/2 mR<sup>2</sup></i>) și legile frecării uscate Coulomb.</div>
+            <div class="topic__item"><strong>Noțiuni fizice:</strong> Legile frecării uscate (Coulomb), diferența dintre forțele exterioare și cele interioare de legătură (tensiuni, reacțiuni).</div>
           </div>
         </div>
       </div>
