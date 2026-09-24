@@ -14,20 +14,24 @@ async function processImages() {
       try {
         // Load the image
         const img = sharp(inputPath);
-        
-        // Convert to grayscale and invert to get a mask where drawings are white (255) and background is black (0)
-        // Since original images are black on white, negate makes them white on black.
-        // Wait, some might already be white on black? No, all the drawings were black on white, and inverted in CSS.
-        const mask = await img.clone()
-          .grayscale()
-          .negate()
-          // Increase contrast so the background becomes truly black (0) and lines become truly white (255)
-          .linear(2.0, -100) 
-          .toBuffer();
-
-        // Now create a pure white image of the same size
         const metadata = await img.metadata();
+        let mask;
+        const stats = await img.stats();
         
+        if (metadata.hasAlpha || stats.channels.length === 4) {
+          // Image has transparent lines and white background.
+          // Extract the alpha channel (where background is opaque 255, lines are transparent 0).
+          // Negate it so background becomes transparent 0, and lines become opaque 255.
+          mask = await img.clone().extractChannel('alpha').negate().toBuffer();
+        } else {
+          // Original logic for black lines on white background
+          mask = await img.clone()
+            .grayscale()
+            .negate()
+            .linear(2.0, -100) 
+            .toBuffer();
+        }
+
         const outDir = path.join(publicDir, 't');
         if (!fs.existsSync(outDir)) fs.mkdirSync(outDir);
         const outPath = path.join(outDir, file);
@@ -40,7 +44,6 @@ async function processImages() {
             background: { r: 255, g: 255, b: 255 }
           }
         })
-        // Join the mask as the alpha channel
         .joinChannel(mask)
         .webp({ quality: 90 })
         .toFile(outPath);
