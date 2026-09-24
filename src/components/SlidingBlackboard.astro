@@ -98,6 +98,7 @@
 
   /* Efectul realist de cretă (optimizat pentru a îngroșa și lumina liniile subțiri) */
   .chalk-wrapper {
+    mix-blend-mode: screen; /* Must be on wrapper to prevent iOS Safari mask bug */
     opacity: 1;
     pointer-events: none;
     will-change: transform, opacity;
@@ -107,7 +108,6 @@
 
   .chalk-img {
     filter: drop-shadow(0 0 1px rgba(255,255,255,0.8)) grayscale(1) contrast(5) invert(1) contrast(2.2) brightness(1.7) sepia(0.2) hue-rotate(180deg);
-    mix-blend-mode: screen;
     width: 100%;
     height: auto;
     display: block;
