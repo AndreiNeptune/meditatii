@@ -28,6 +28,10 @@ async function processImages() {
         // Now create a pure white image of the same size
         const metadata = await img.metadata();
         
+        const outDir = path.join(publicDir, 't');
+        if (!fs.existsSync(outDir)) fs.mkdirSync(outDir);
+        const outPath = path.join(outDir, file);
+
         await sharp({
           create: {
             width: metadata.width,
@@ -39,11 +43,7 @@ async function processImages() {
         // Join the mask as the alpha channel
         .joinChannel(mask)
         .webp({ quality: 90 })
-        .toFile(inputPath + '.tmp.webp');
-
-        // Replace original with the transparent one
-        fs.unlinkSync(inputPath);
-        fs.renameSync(inputPath + '.tmp.webp', inputPath);
+        .toFile(outPath);
 
       } catch (e) {
         console.error(`Error processing ${file}:`, e);
