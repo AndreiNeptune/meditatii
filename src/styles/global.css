@@ -600,12 +600,6 @@ p {
   animation: fadeUp 0.6s ease 0.1s forwards;
 }
 
-.hero__title span {
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
 
 .hero__subtitle {
   font-size: 1.15rem;
