@@ -9,7 +9,7 @@ export const POST: APIRoute = async ({ request }) => {
     const result = formSchema.safeParse(rawData);
     
     if (!result.success) {
-      console.warn('Server validation failed:', result.error.errors);
+      console.warn('Server validation failed:', result.error.issues);
       return new Response(JSON.stringify({ error: 'Date invalide trimise către server.' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' }

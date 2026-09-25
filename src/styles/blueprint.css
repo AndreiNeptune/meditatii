@@ -122,11 +122,6 @@
     padding-bottom: 1rem;
   }
 
-  /* Keep shadow under text as an extra layer of readability */
-  .hero--subject .hero__content h1,
-  .hero--subject .hero__content p,
-  .hero--subject .hero__content strong {
-  }
 }
 
 /* Gallery layout */

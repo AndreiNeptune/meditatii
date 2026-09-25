@@ -36,8 +36,19 @@ async function processImages() {
     try {
       const img = sharp(inputPath);
       const metadata = await img.metadata();
+      const cropMargin = 15;
+      const extractOptions = {
+        left: cropMargin,
+        top: cropMargin,
+        width: metadata.width - 2 * cropMargin,
+        height: metadata.height - 2 * cropMargin
+      };
+
+      const imgCropped = img.clone().extract(extractOptions);
+      const croppedMetadata = { width: extractOptions.width, height: extractOptions.height };
+      
       let mask;
-      const stats = await img.stats();
+      const stats = await imgCropped.stats();
       let isSolidBackground = true;
 
       if (metadata.hasAlpha || stats.channels.length === 4) {
@@ -48,9 +59,9 @@ async function processImages() {
       }
 
       if (!isSolidBackground) {
-        mask = await img.clone().extractChannel('alpha').toBuffer();
+        mask = await imgCropped.clone().extractChannel('alpha').toBuffer();
       } else {
-        mask = await img.clone()
+        mask = await imgCropped.clone()
           .grayscale()
           .negate()
           .linear(2.0, -100) 
@@ -59,8 +70,8 @@ async function processImages() {
 
       await sharp({
         create: {
-          width: metadata.width,
-          height: metadata.height,
+          width: croppedMetadata.width,
+          height: croppedMetadata.height,
           channels: 3,
           background: { r: 255, g: 255, b: 255 }
         }

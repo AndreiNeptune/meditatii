@@ -1,0 +1,21 @@
+{
+  "name": "Meditații Poli UNSTPB",
+  "short_name": "Meditații Poli",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48 64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#6c5ce7",
+  "background_color": "#0f172a",
+  "display": "standalone",
+  "start_url": "/",
+  "description": "Meditații pentru studenții Politehnicii (UNSTPB). GD, Analiză Matematică, Mecanică și Desen Tehnic."
+}
