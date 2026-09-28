@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import WhatsAppFAB from '../components/WhatsAppFAB.astro';
 import MobileStickyCTA from '../components/MobileStickyCTA.astro';
 import CookieBanner from '../components/CookieBanner.astro';
+import LeadForm from '../components/LeadForm.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -11,9 +12,10 @@ interface Props {
   description: string;
   currentPage?: string;
   whatsappMaterie?: string;
+  hideLeadForm?: boolean;
 }
 
-const { title, description, currentPage = '', whatsappMaterie = 'o materie de la Poli' } = Astro.props;
+const { title, description, currentPage = '', whatsappMaterie = 'o materie de la Poli', hideLeadForm = false } = Astro.props;
 const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
 ---
 
@@ -89,6 +91,8 @@ const waNumber = import.meta.env.WHATSAPP_NUMBER || '40750208299';
   <main>
     <slot />
   </main>
+
+  {!hideLeadForm && <LeadForm />}
 
   <Footer waNumber={waNumber} />
   <WhatsAppFAB materie={whatsappMaterie} waNumber={waNumber} />
