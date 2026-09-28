@@ -1,95 +1,166 @@
 ---
 ---
 
-<section class="lead-form-section reveal">
-  <div class="container container--narrow">
-    <div class="card card--glow lead-form-card">
-      <div class="lead-form__content">
-        <h2 class="section__title">Vrei să primești resurse gratuite pentru examene?</h2>
-        <p class="section__subtitle" style="margin-bottom: var(--space-lg);">
-          Lasă-ne adresa de email și îți trimitem formulare, cheat-sheet-uri (Analiză, Mecanică, GD) și sfaturi care să te scape de restanțe direct în inbox. Fără spam.
-        </p>
-        
-        <form class="lead-form" id="lead-magnet-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Mulțumim! Te-ai abonat cu succes la resursele gratuite. Vom trimite materiale în curând.'); this.reset();">
-          <div class="lead-form__input-group">
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Adresa ta de email" 
-              required 
-              class="lead-form__input"
-            />
-            <button type="submit" class="btn btn--primary lead-form__btn">
-              Vreau resursele
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"></line>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-              </svg>
-            </button>
-          </div>
-          <p class="lead-form__privacy">
-            *Datele tale sunt în siguranță. Te poți dezabona oricând.
-          </p>
-        </form>
-      </div>
+<div class="lead-form-fixed" id="lead-magnet-bar">
+  <div class="container lead-form-fixed__inner">
+    <div class="lead-form-fixed__text">
+      <strong>Resurse gratuite pentru examene</strong>
+      <span>Lasă-ne adresa de email și îți trimitem cheat-sheet-uri pentru Analiză, Mecanică și GD. Fără spam.</span>
     </div>
+    
+    <form class="lead-form-fixed__form" id="lead-magnet-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Mulțumim! Te-ai abonat cu succes la resursele gratuite. Vom trimite materiale în curând.'); document.getElementById('lead-magnet-bar').style.display='none';">
+      <div class="lead-form__input-group">
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Adresa ta de email" 
+          required 
+          class="lead-form__input"
+        />
+        <button type="submit" class="btn btn--primary lead-form__btn">
+          Vreau resursele
+        </button>
+      </div>
+    </form>
+    
+    <button type="button" class="lead-form-fixed__close" aria-label="Închide" onclick="document.getElementById('lead-magnet-bar').style.display='none'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
   </div>
-</section>
+</div>
 
 <style>
-  .lead-form-section {
-    padding: var(--space-2xl) 0 var(--space-4xl);
-  }
-  
-  .lead-form-card {
-    text-align: center;
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(162, 155, 254, 0.05));
-    border-color: rgba(108, 92, 231, 0.2);
-    padding: var(--space-3xl) var(--space-lg);
+  .lead-form-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(18, 18, 26, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border-accent);
+    padding: var(--space-md) 0;
+    z-index: 995;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+    transform: translateY(150%);
+    animation: slideUpBar 0.6s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
   }
 
-  .lead-form__content {
-    max-width: 700px;
-    margin: 0 auto;
+  @keyframes slideUpBar {
+    to { transform: translateY(0); }
   }
-  
+
+  .lead-form-fixed__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    position: relative;
+    padding-right: 40px; /* space for close btn */
+  }
+
+  .lead-form-fixed__text {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lead-form-fixed__text strong {
+    color: var(--text-primary);
+    font-size: 1.05rem;
+  }
+
+  .lead-form-fixed__text span {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .lead-form-fixed__form {
+    flex: 1;
+    max-width: 450px;
+  }
+
   .lead-form__input-group {
     display: flex;
     gap: var(--space-sm);
-    max-width: 500px;
-    margin: 0 auto;
   }
-  
+
   .lead-form__input {
     flex-grow: 1;
-    padding: 1rem 1.5rem;
+    padding: 0.6rem 1.2rem;
     border-radius: var(--radius-full);
     border: 1px solid var(--border-hover);
-    background: var(--bg-primary);
+    background: rgba(255, 255, 255, 0.03);
     color: var(--text-primary);
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.9rem;
     outline: none;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    transition: all var(--transition-fast);
   }
   
   .lead-form__input:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+    background: var(--bg-card);
+    box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
   }
-  
+
   .lead-form__btn {
-    border-radius: var(--radius-full);
-    padding: 1rem 1.5rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
-  
-  .lead-form__privacy {
-    margin-top: var(--space-md);
-    font-size: 0.8rem;
+
+  .lead-form-fixed__close {
+    position: absolute;
+    top: 50%;
+    right: var(--space-lg);
+    transform: translateY(-50%);
     color: var(--text-muted);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
   }
-  
+
+  .lead-form-fixed__close:hover {
+    color: var(--text-primary);
+    background: rgba(255,255,255,0.1);
+  }
+
+  @media (max-width: 900px) {
+    .lead-form-fixed__inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-md);
+      padding-right: var(--space-lg);
+    }
+    
+    .lead-form-fixed__form {
+      max-width: 100%;
+    }
+    
+    .lead-form-fixed__close {
+      top: -16px;
+      right: 16px;
+      transform: none;
+      background: var(--bg-card);
+      border-color: var(--border-accent);
+    }
+  }
+
   @media (max-width: 768px) {
+    .lead-form-fixed {
+      bottom: 60px; /* Sits above the MobileStickyCTA */
+      padding: var(--space-md) 0 var(--space-lg);
+    }
+    
     .lead-form__input-group {
       flex-direction: column;
     }
