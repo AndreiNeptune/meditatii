@@ -514,13 +514,13 @@ p {
 }
 
 .navbar__hamburger--open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: translateY(7px) rotate(45deg);
 }
 .navbar__hamburger--open span:nth-child(2) {
   opacity: 0;
 }
 .navbar__hamburger--open span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .navbar__mobile-menu {
